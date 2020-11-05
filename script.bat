@@ -1,7 +1,7 @@
 @echo off
 set "CurDir="
 for %%a in ("%cd%") do set "CurDir=%%~nxa"
-if NOT "%CurDir%" == "assignment1" exit
+if NOT "%CurDir%" == "assignment2" exit
 
 if exist %CD%\src\test\testcases\ (
     echo "Cleaning testcases"
@@ -92,6 +92,11 @@ echo.
 echo "=============================================="
 echo "Testing Parser..."
 python run.py test ParserSuite
+
+echo.
+echo "=============================================="
+echo "Testing ASTGen..."
+python run.py test ASTGenSuite
 
 cd ..
 if exist %CD%\src\test\ParserSuite.txt (
