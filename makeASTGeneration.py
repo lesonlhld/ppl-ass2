@@ -1,4 +1,10 @@
-filename = "./ASTGeneration.py"
+import os
+from datetime import datetime
+
+Current_Date = datetime.now().strftime("%d-%m-%Y_%H-%M-%S")
+os.rename(r'./src/main/bkit/astgen/ASTGeneration.py',r'./src/main/bkit/astgen/ASTGeneration_' + str(Current_Date) + '.py')
+
+filename = "./src/main/bkit/astgen/ASTGeneration.py"
 fo = open(filename, "w")
 fo.write("""# Generate automatically
 from BKITVisitor import BKITVisitor
