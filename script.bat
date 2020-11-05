@@ -18,7 +18,7 @@ if exist %CD%\src\test\solutions\ (
     mkdir %CD%\src\test\solutions\
 
 if exist %CD%\src\test\solutionsSample (
-    echo "Cleaning solutions"
+    echo "Cleaning solutions sample"
 	rmdir /Q /S %CD%\src\test\solutionsSample
 )
 
@@ -41,19 +41,19 @@ if exist %CD%\test\check.py (
     robocopy %CD%\test\ %CD%\src\ check.py /move /NFL /NDL /NJH /NJS /nc /ns /np
 )
 
-if exist %CD%\test\LexerSuite.py (
-    echo "Rename old LexerSuite.py to LexerSuite_old.py"
-    ren %CD%\src\test\LexerSuite.py LexerSuite_old.py
-    echo "Copying LexerSuite.py"
-    robocopy %CD%\test\ %CD%\src\test\ LexerSuite.py /move /NFL /NDL /NJH /NJS /nc /ns /np
-)
+@REM if exist %CD%\test\LexerSuite.py (
+@REM     echo "Rename old LexerSuite.py to LexerSuite_old.py"
+@REM     ren %CD%\src\test\LexerSuite.py LexerSuite_old.py
+@REM     echo "Copying LexerSuite.py"
+@REM     robocopy %CD%\test\ %CD%\src\test\ LexerSuite.py /move /NFL /NDL /NJH /NJS /nc /ns /np
+@REM )
 
-if exist %CD%\test\ParserSuite.py (
-    echo "Rename old ParserSuite.py to ParserSuite_old.py"
-    ren %CD%\src\test\ParserSuite.py ParserSuite_old.py
-    echo "Copying ParserSuite.py"
-    robocopy %CD%\test\ %CD%\src\test\ ParserSuite.py /move /NFL /NDL /NJH /NJS /nc /ns /np
-)
+@REM if exist %CD%\test\ParserSuite.py (
+@REM     echo "Rename old ParserSuite.py to ParserSuite_old.py"
+@REM     ren %CD%\src\test\ParserSuite.py ParserSuite_old.py
+@REM     echo "Copying ParserSuite.py"
+@REM     robocopy %CD%\test\ %CD%\src\test\ ParserSuite.py /move /NFL /NDL /NJH /NJS /nc /ns /np
+@REM )
 
 if exist %CD%\test\TestUtils.py (
     echo "Rename old TestUtils.py to TestUtils_old.py"
@@ -62,13 +62,13 @@ if exist %CD%\test\TestUtils.py (
     robocopy %CD%\test\ %CD%\src\test\ TestUtils.py /move /NFL /NDL /NJH /NJS /nc /ns /np
 )
 
-if exist %CD%\src\test\testLexer.py (
-    del %CD%\src\test\testLexer.py /f /q
-)
+@REM if exist %CD%\src\test\testLexer.py (
+@REM     del %CD%\src\test\testLexer.py /f /q
+@REM )
 
-if exist %CD%\src\test\testParser.py (
-    del %CD%\src\test\testParser.py /f /q
-)
+@REM if exist %CD%\src\test\testParser.py (
+@REM     del %CD%\src\test\testParser.py /f /q
+@REM )
 
 cd src
 
@@ -76,34 +76,34 @@ echo "Cleaning and Generatting..."
 python run.py clean
 python run.py gen
 
-echo.
-echo "=============================================="
-echo "Testing Lexer..."
-python run.py test LexerSuite
+@REM echo.
+@REM echo "=============================================="
+@REM echo "Testing Lexer..."
+@REM python run.py test LexerSuite
 
-cd ..
-if exist %CD%\src\test\LexerSuite.txt (
-    robocopy %CD%\src\test\ %CD%\output\ LexerSuite.txt /move /NFL /NDL /NJH /NJS /nc /ns /np
-    del %CD%\src\test\ParserSuite.txt /f /q
-)
-cd src
+@REM cd ..
+@REM if exist %CD%\src\test\LexerSuite.txt (
+@REM     robocopy %CD%\src\test\ %CD%\output\ LexerSuite.txt /move /NFL /NDL /NJH /NJS /nc /ns /np
+@REM     del %CD%\src\test\ParserSuite.txt /f /q
+@REM )
+@REM cd src
 
-echo.
-echo "=============================================="
-echo "Testing Parser..."
-python run.py test ParserSuite
+@REM echo.
+@REM echo "=============================================="
+@REM echo "Testing Parser..."
+@REM python run.py test ParserSuite
 
 echo.
 echo "=============================================="
 echo "Testing ASTGen..."
 python run.py test ASTGenSuite
 
-cd ..
-if exist %CD%\src\test\ParserSuite.txt (
-    robocopy %CD%\src\test\ %CD%\output\ ParserSuite.txt /move /NFL /NDL /NJH /NJS /nc /ns /np
-    del %CD%\src\test\LexerSuite.txt /f /q
-)
-cd src
+@REM cd ..
+@REM if exist %CD%\src\test\ParserSuite.txt (
+@REM     robocopy %CD%\src\test\ %CD%\output\ ParserSuite.txt /move /NFL /NDL /NJH /NJS /nc /ns /np
+@REM     del %CD%\src\test\LexerSuite.txt /f /q
+@REM )
+@REM cd src
 
 if exist %CD%\test\solutionsSample\ (
     if exist %CD%\check.py (
@@ -123,15 +123,15 @@ if exist %CD%\src\check.txt (
     start %CD%\output\check.txt
 )
 
-if exist %CD%\src\test\LexerSuite_old.py (
-    robocopy %CD%\src\test\ %CD%\output\test\ LexerSuite.py /move /NFL /NDL /NJH /NJS /nc /ns /np
-    ren %CD%\src\test\LexerSuite_old.py LexerSuite.py
-)
+@REM if exist %CD%\src\test\LexerSuite_old.py (
+@REM     robocopy %CD%\src\test\ %CD%\output\test\ LexerSuite.py /move /NFL /NDL /NJH /NJS /nc /ns /np
+@REM     ren %CD%\src\test\LexerSuite_old.py LexerSuite.py
+@REM )
 
-if exist %CD%\src\test\ParserSuite_old.py (
-    robocopy %CD%\src\test\ %CD%\output\test\ ParserSuite.py /move /NFL /NDL /NJH /NJS /nc /ns /np
-    ren %CD%\src\test\ParserSuite_old.py ParserSuite.py
-)
+@REM if exist %CD%\src\test\ParserSuite_old.py (
+@REM     robocopy %CD%\src\test\ %CD%\output\test\ ParserSuite.py /move /NFL /NDL /NJH /NJS /nc /ns /np
+@REM     ren %CD%\src\test\ParserSuite_old.py ParserSuite.py
+@REM )
 
 if exist %CD%\src\test\TestUtils_old.py (
     robocopy %CD%\src\test\ %CD%\output\test\ TestUtils.py /move /NFL /NDL /NJH /NJS /nc /ns /np
