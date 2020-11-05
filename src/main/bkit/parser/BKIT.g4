@@ -24,7 +24,7 @@ options{
 	language=Python3;
 }
 
-program  : SKIP_* variable_decl* SKIP_* body_decl* SKIP_* EOF;
+program: SKIP_* variable_decl* SKIP_* body_decl* SKIP_* EOF;
 
 fragment LETTER: [a-zA-Z];
 fragment DIGIT: [0-9];
@@ -36,8 +36,8 @@ fragment NON_HEX_DIGIT: [1-9A-F];
 fragment INT_PART: DECIMAL_INTEGER;
 fragment DEC_PART: DOT DECIMAL_INTEGER| DOT [0]* NON_ZERO_DIGIT;
 fragment EXPONENT: [eE][+-]? DECIMAL_INTEGER;
-fragment POINT_FLOAT : (INT_PART DEC_PART) | (INT_PART DOT);
-fragment EXPONENT_FLOAT : (INT_PART | POINT_FLOAT) EXPONENT;
+fragment POINT_FLOAT: (INT_PART DEC_PART) | (INT_PART DOT);
+fragment EXPONENT_FLOAT: (INT_PART | POINT_FLOAT) EXPONENT;
 fragment WS: [ \t\r\n\f]+; // White-space characters
 fragment COMMENT: '**' .*? '**';
 fragment NEWLINE: ('\r' '\n'? | '\n');
@@ -143,7 +143,7 @@ STRING: DOUBLE_QUOTE STRING_CONTENT*? DOUBLE_QUOTE {
 		self.text = y[1:-1]
 	};
 
-SKIP_ : (COMMENT | WS | NEWLINE) -> skip ; // skip spaces, tabs, newlines or comment
+SKIP_: (COMMENT | WS | NEWLINE) -> skip ; // skip spaces, tabs, newlines or comment
 
 /*
  * Parser rules

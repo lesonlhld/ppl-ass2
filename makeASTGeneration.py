@@ -24,9 +24,12 @@ with open("./target/BKITParser.py") as fp:
             with open("./src/main/bkit/parser/BKIT.g4") as bkit:
                 bkitlines = bkit.readlines()
                 for cmt in bkitlines:
-                    i = cmt.find(line[index + 6:-28].lower())
+                    i = cmt.find(line[index + 6:-28].lower() + ":")
                     if i != -1 and cmt[0] != '/':
                         comment = cmt
+                        print(comment)
+                        print(line[index + 6:-28])
+                        print("\n")
 
             fo.write("""    # """ + comment + """    def visit""" + line[index + 6:-28] + """(self,ctx:BKITParser.""" + line[index + 6:-21] + """):
         return None
