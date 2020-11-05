@@ -2,7 +2,8 @@ import os
 from datetime import datetime
 
 Current_Date = datetime.now().strftime("%d-%m-%Y_%H-%M-%S")
-os.rename(r'./src/main/bkit/astgen/ASTGeneration.py',r'./src/main/bkit/astgen/ASTGeneration_' + str(Current_Date) + '.py')
+if os.path.isfile(r'./src/main/bkit/astgen/ASTGeneration.py'):
+    os.rename(r'./src/main/bkit/astgen/ASTGeneration.py',r'./src/main/bkit/astgen/ASTGeneration_' + str(Current_Date) + '.py')
 
 filename = "./src/main/bkit/astgen/ASTGeneration.py"
 fo = open(filename, "w")
@@ -24,12 +25,10 @@ with open("./target/BKITParser.py") as fp:
             with open("./src/main/bkit/parser/BKIT.g4") as bkit:
                 bkitlines = bkit.readlines()
                 for cmt in bkitlines:
-                    i = cmt.find(line[index + 6:-28].lower() + ":")
+                    init = line[index + 6:-28].lower()
+                    i = cmt.find(init + ":",0,len(init)+1)
                     if i != -1 and cmt[0] != '/':
                         comment = cmt
-                        print(comment)
-                        print(line[index + 6:-28])
-                        print("\n")
 
             fo.write("""    # """ + comment + """    def visit""" + line[index + 6:-28] + """(self,ctx:BKITParser.""" + line[index + 6:-21] + """):
         return None

@@ -24,6 +24,11 @@ class BKITVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by BKITParser#variable.
+    def visitVariable(self, ctx:BKITParser.VariableContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by BKITParser#array_decl.
     def visitArray_decl(self, ctx:BKITParser.Array_declContext):
         return self.visitChildren(ctx)
@@ -79,8 +84,18 @@ class BKITVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by BKITParser#parameter_list.
+    def visitParameter_list(self, ctx:BKITParser.Parameter_listContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by BKITParser#body.
     def visitBody(self, ctx:BKITParser.BodyContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by BKITParser#var_list.
+    def visitVar_list(self, ctx:BKITParser.Var_listContext):
         return self.visitChildren(ctx)
 
 
@@ -101,6 +116,11 @@ class BKITVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by BKITParser#if_stmt.
     def visitIf_stmt(self, ctx:BKITParser.If_stmtContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by BKITParser#else_if.
+    def visitElse_if(self, ctx:BKITParser.Else_ifContext):
         return self.visitChildren(ctx)
 
 
