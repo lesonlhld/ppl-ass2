@@ -6,7 +6,12 @@ from AST import *
 class ASTGeneration(BKITVisitor):
     # program: SKIP_* variable_decl* SKIP_* body_decl* SKIP_* EOF;
     def visitProgram(self,ctx:BKITParser.ProgramContext):
-        return Program([x.accept(self) for x in ctx.variable_decl()])
+        program = []
+        if ctx.variable_decl():
+            program += [y for x in ctx.variable_decl() for y in x.accept(self)]
+        if ctx.body_decl():
+            program += [x.accept(self) for x in ctx.body_decl()]
+        return Program(program)
 
     # variable_decl: VAR COLON variable_list SEMI;
     def visitVariable_decl(self,ctx:BKITParser.Variable_declContext):
@@ -19,11 +24,11 @@ class ASTGeneration(BKITVisitor):
         if ctx.variable_list():
             if ctx.init_value():
                 init = ctx.init_value().accept(self)
-            return VarDecl(var, dimen, init) + ctx.variable_list().accept(self)
+            return [VarDecl(var, dimen, init)] + ctx.variable_list().accept(self)
         else:
             if ctx.init_value():
                 init = ctx.init_value().accept(self)
-            return VarDecl(var, dimen, init)
+            return [VarDecl(var, dimen, init)]
 
     # variable: ID | array_decl;
     def visitVariable(self,ctx:BKITParser.VariableContext):
@@ -44,30 +49,31 @@ class ASTGeneration(BKITVisitor):
     # init_value: literal COMMA init_value | literal;
     def visitInit_value(self,ctx:BKITParser.Init_valueContext):
         if ctx.init_value():
-            return ctx.literal().accpet(self) + ctx.init_value.accept(self)
-        return ctx.literal().accpet(self)
+            return ctx.literal().accept(self) + ctx.init_value().accept(self)
+        return ctx.literal().accept(self)
 
     # literal: array | integer | FLOAT  | boolean_literal | STRING;
     def visitLiteral(self,ctx:BKITParser.LiteralContext):
         if ctx.array():
-            return ctx.array().accept()
+            return ArrayLiteral(ctx.array().accept(self))
         elif ctx.integer():
-            return ctx.integer().accept()
+            return ctx.integer().accept(self)
         elif ctx.FLOAT():
             return FloatLiteral(ctx.FLOAT())
         elif ctx.boolean_literal():
-            return ctx.boolean_literal().accept()
+            return ctx.boolean_literal().accept(self)
         elif ctx.STRING():
             return StringLiteral(ctx.STRING())
 
     # integer: DECIMAL_INTEGER | HEX_INTEGER | OCT_INTEGER;
     def visitInteger(self,ctx:BKITParser.IntegerContext):
-        if ctx.DECIMAL_INTEGER():
-            return IntLiteral(ctx.DECIMAL_INTEGER())
-        elif ctx.HEX_INTEGER():
-            return IntLiteral(ctx.HEX_INTEGER())
-        else:
-            return IntLiteral(ctx.OCT_INTEGER())
+        # if ctx.DECIMAL_INTEGER():
+        #     return IntLiteral(int(ctx.DECIMAL_INTEGER().getText()))
+        # elif ctx.HEX_INTEGER():
+        #     return IntLiteral(ctx.HEX_INTEGER())
+        # else:
+        #     return IntLiteral(ctx.OCT_INTEGER())
+        return IntLiteral(eval(ctx.getText()))
 
     # boolean_literal: TRUE | FALSE ;
     def visitBoolean_literal(self,ctx:BKITParser.Boolean_literalContext):
@@ -75,43 +81,84 @@ class ASTGeneration(BKITVisitor):
 
     # array: LEFT_BRACE array_list? RIGHT_BRACE;
     def visitArray(self,ctx:BKITParser.ArrayContext):
-        return None
+        arrayList = []
+        if ctx.array_list():
+            arrayList += ctx.array_list().accept(self)
+        return arrayList
 
     # array_list: literal COMMA array_list | literal;
     def visitArray_list(self,ctx:BKITParser.Array_listContext):
-        return None
+        if ctx.getChildCount() == 1:
+            return [ctx.literal().accept(self)]
+        return [ctx.literal().accept(self)] + ctx.array_list().accept(self)
 
     # body_decl: init_body body;
     def visitBody_decl(self,ctx:BKITParser.Body_declContext):
-        return None
+        name, param = ctx.init_body().accept(self)
+        body = ctx.body().accept(self)
+        return FuncDecl(name, param, body)
 
-    # init_body: FUNCTION COLON ID parameter;
+    # init_body: FUNCTION COLON ID parameter?;
     def visitInit_body(self,ctx:BKITParser.Init_bodyContext):
-        return None
+        name = Id(ctx.ID().getText())
+        param = []
+        if ctx.parameter():
+            param += ctx.parameter().accept(self)
+        return (name, param)
 
-    # parameter: PARAMETER COLON parameter_list |;
+    # parameter: PARAMETER COLON parameter_list;
     def visitParameter(self,ctx:BKITParser.ParameterContext):
-        return None
+        return ctx.parameter_list().accept(self)
 
     # parameter_list: variable COMMA parameter_list | variable;
     def visitParameter_list(self,ctx:BKITParser.Parameter_listContext):
-        return None
+        var, dimen = ctx.variable().accept(self)
+        init = []
+        if ctx.parameter_list():
+            return [VarDecl(var, dimen, init)] + ctx.parameter_list().accept(self)
+        else:
+            return [VarDecl(var, dimen, init)]
 
-    # body: BODY COLON var_list stmt_list ENDBODY DOT;
+    # body: BODY COLON var_list? stmt_list? ENDBODY DOT;
     def visitBody(self,ctx:BKITParser.BodyContext):
-        return None
+        varDecl = ctx.var_list().accept(self) if ctx.var_list() else []
+        stmt = ctx.stmt_list().accept(self) if ctx.stmt_list() else []
+        return [varDecl,stmt]
 
-    # var_list: variable_decl var_list | variable_decl |;
+    # var_list: variable_decl var_list | variable_decl;
     def visitVar_list(self,ctx:BKITParser.Var_listContext):
-        return None
+        if ctx.getChildCount() == 1:
+            return [x for x in ctx.variable_decl().accept(self)]
+        else:
+            return [x for x in ctx.variable_decl().accept(self)] + ctx.var_list().accept(self)
 
     # stmt: assign_stmt | if_stmt | for_stmt | while_stmt | do_while_stmt | break_stmt | continue_stmt | call_stmt | return_stmt;
     def visitStmt(self,ctx:BKITParser.StmtContext):
-        return None
+        if ctx.assign_stmt():
+            return ctx.assign_stmt().accept(self)
+        elif ctx.if_stmt():
+            return ctx.if_stmt().accept(self)
+        elif ctx.for_stmt():
+            return ctx.for_stmt().accept(self)
+        elif ctx.while_stmt():
+            return ctx.while_stmt().accept(self)
+        elif ctx.do_while_stmt():
+            return ctx.do_while_stmt().accept(self)
+        elif ctx.break_stmt():
+            return ctx.break_stmt().accept(self)
+        elif ctx.continue_stmt():
+            return ctx.continue_stmt().accept(self)
+        elif ctx.call_stmt():
+            return ctx.call_stmt().accept(self)
+        elif ctx.return_stmt():
+            return ctx.return_stmt().accept(self)
 
-    # stmt_list: stmt stmt_list | stmt |;
+    # stmt_list: stmt stmt_list | stmt;
     def visitStmt_list(self,ctx:BKITParser.Stmt_listContext):
-        return None
+        if ctx.getChildCount() > 1:
+            return [ctx.stmt().accept(self)] + ctx.stmt_list().accept(self)
+        elif ctx.getChildCount() == 1:
+            return [ctx.stmt().accept(self)]
 
     # assign_stmt: ID index_operators? ASSIGN exp SEMI;
     def visitAssign_stmt(self,ctx:BKITParser.Assign_stmtContext):
