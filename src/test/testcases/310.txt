@@ -1,6 +1,2 @@
- Function: foo
-                        Parameter: a
-                        Body:
-                        Var: x = 2;
-                        EndBody.
-                
+Var:x;
+        Var: x=12;

@@ -1,1 +1,1 @@
-Program([FuncDecl(Id(foo)[],([][]))])
+Program([VarDecl(Id(arr),[IntLiteral(5),IntLiteral(6)],ArrayLiteral(IntLiteral(1),IntLiteral(2))),VarDecl(Id(y),[IntLiteral(1)])])
