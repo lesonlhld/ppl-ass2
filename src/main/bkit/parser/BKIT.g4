@@ -182,14 +182,14 @@ parameter: PARAMETER COLON parameter_list;
 
 parameter_list: variable COMMA parameter_list | variable;
 
-body: BODY COLON var_list? stmt_list? ENDBODY DOT;
+body: BODY COLON stmt_list ENDBODY DOT;
 
 var_list: variable_decl var_list | variable_decl;
 
 // Statement
 stmt: assign_stmt | if_stmt | for_stmt | while_stmt | do_while_stmt | break_stmt | continue_stmt | call_stmt | return_stmt;
 
-stmt_list: stmt stmt_list | stmt;
+stmt_list: var_list? stmt*;
 
 assign_stmt: ID index_operators? ASSIGN exp SEMI;
 

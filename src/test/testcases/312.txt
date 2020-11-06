@@ -1,1 +1,6 @@
-Var: arr[5][6] = {1,2}, y[1];
+ Function: foo
+                        Parameter: a
+                        Body:
+                        x = 3;
+                        EndBody.
+                

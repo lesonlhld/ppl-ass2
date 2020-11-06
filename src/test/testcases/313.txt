@@ -1,5 +1,1 @@
-Function: foo 
-        Parameter: n 
-        Body: 
-            Var: x[12]={12};
-        EndBody.
+Var: arr[2] = {1,2};

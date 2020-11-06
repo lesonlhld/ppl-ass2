@@ -57,27 +57,21 @@ class ASTGeneration(BKITVisitor):
         if ctx.array():
             return ArrayLiteral(ctx.array().accept(self))
         elif ctx.integer():
-            return ctx.integer().accept(self)
+            return IntLiteral(ctx.integer().accept(self))
         elif ctx.FLOAT():
             return FloatLiteral(ctx.FLOAT())
         elif ctx.boolean_literal():
-            return ctx.boolean_literal().accept(self)
+            return BooleanLiteral(ctx.boolean_literal().accept(self))
         elif ctx.STRING():
             return StringLiteral(ctx.STRING())
 
     # integer: DECIMAL_INTEGER | HEX_INTEGER | OCT_INTEGER;
     def visitInteger(self,ctx:BKITParser.IntegerContext):
-        # if ctx.DECIMAL_INTEGER():
-        #     return IntLiteral(int(ctx.DECIMAL_INTEGER().getText()))
-        # elif ctx.HEX_INTEGER():
-        #     return IntLiteral(ctx.HEX_INTEGER())
-        # else:
-        #     return IntLiteral(ctx.OCT_INTEGER())
-        return IntLiteral(eval(ctx.getText()))
+        return eval(ctx.getText())
 
     # boolean_literal: TRUE | FALSE ;
     def visitBoolean_literal(self,ctx:BKITParser.Boolean_literalContext):
-        return BooleanLiteral("true" if ctx.TRUE() else "false")
+        return ctx.getText()
 
     # array: LEFT_BRACE array_list? RIGHT_BRACE;
     def visitArray(self,ctx:BKITParser.ArrayContext):
@@ -119,11 +113,10 @@ class ASTGeneration(BKITVisitor):
         else:
             return [VarDecl(var, dimen, init)]
 
-    # body: BODY COLON var_list? stmt_list? ENDBODY DOT;
+    # body: BODY COLON stmt_list ENDBODY DOT;
     def visitBody(self,ctx:BKITParser.BodyContext):
-        varDecl = ctx.var_list().accept(self) if ctx.var_list() else []
-        stmt = ctx.stmt_list().accept(self) if ctx.stmt_list() else []
-        return [varDecl,stmt]
+        varDecl, stmt = ctx.stmt_list().accept(self)
+        return [varDecl, stmt]
 
     # var_list: variable_decl var_list | variable_decl;
     def visitVar_list(self,ctx:BKITParser.Var_listContext):
@@ -153,16 +146,16 @@ class ASTGeneration(BKITVisitor):
         elif ctx.return_stmt():
             return ctx.return_stmt().accept(self)
 
-    # stmt_list: stmt stmt_list | stmt;
+    # stmt_list: var_list? stmt*;
     def visitStmt_list(self,ctx:BKITParser.Stmt_listContext):
-        if ctx.getChildCount() > 1:
-            return [ctx.stmt().accept(self)] + ctx.stmt_list().accept(self)
-        elif ctx.getChildCount() == 1:
-            return [ctx.stmt().accept(self)]
-
+        varList = ctx.var_list().accept(self) if ctx.var_list() else []
+        stmtList = []
+        for i in range(len(ctx.stmt())):
+            stmtList += [ctx.stmt(i).accept(self)]
+        return (varList, stmtList)
     # assign_stmt: ID index_operators? ASSIGN exp SEMI;
     def visitAssign_stmt(self,ctx:BKITParser.Assign_stmtContext):
-        return None
+        return Assign(ArrayCell(Id(ctx.ID().getText()),ctx.index_operators().accept(self)),ctx.exp().accept(self)) if ctx.index_operators() else Assign(Id(ctx.ID().getText()),ctx.exp().accept(self))
 
     # if_stmt: IF exp THEN stmt_list else_if (ELSE stmt_list)? ENDIF DOT;
     def visitIf_stmt(self,ctx:BKITParser.If_stmtContext):
@@ -190,11 +183,11 @@ class ASTGeneration(BKITVisitor):
 
     # break_stmt: BREAK SEMI;
     def visitBreak_stmt(self,ctx:BKITParser.Break_stmtContext):
-        return None
+        return Break()
 
     # continue_stmt: CONTINUE SEMI;
     def visitContinue_stmt(self,ctx:BKITParser.Continue_stmtContext):
-        return None
+        return Continue()
 
     # call_stmt: ID LEFT_PAREN exp_list? RIGHT_PAREN SEMI;
     def visitCall_stmt(self,ctx:BKITParser.Call_stmtContext):
@@ -210,73 +203,76 @@ class ASTGeneration(BKITVisitor):
 
     # exp: exp1 relational_operators exp1 | exp1;
     def visitExp(self,ctx:BKITParser.ExpContext):
-        return None
+        return BinaryOp(ctx.relational_operators(),ctx.exp1(0).accept(self),ctx.exp1(1).accept(self)) if ctx.relational_operators() else ctx.exp1(0).accept(self)
 
     # exp1: exp1 boolean_operators exp2 | exp2;
     def visitExp1(self,ctx:BKITParser.Exp1Context):
-        return None
+        return BinaryOp(ctx.boolean_operators(),ctx.exp1().accept(self),ctx.exp2().accept(self)) if ctx.boolean_operators() else ctx.exp2().accept(self)
 
     # exp2: exp2 adding_operators exp3 | exp3;
     def visitExp2(self,ctx:BKITParser.Exp2Context):
-        return None
+        return BinaryOp(ctx.adding_operators(),ctx.exp2().accept(self),ctx.exp3().accept(self)) if ctx.adding_operators() else ctx.exp3().accept(self)
 
     # exp3: exp3 multiplying_operators exp4 | exp4;
     def visitExp3(self,ctx:BKITParser.Exp3Context):
-        return None
+        return BinaryOp(ctx.multiplying_operators(),ctx.exp3().accept(self),ctx.exp4().accept(self)) if ctx.multiplying_operators() else ctx.exp4().accept(self)
 
     # exp4: NOT exp4 | exp5;
     def visitExp4(self,ctx:BKITParser.Exp4Context):
-        return None
+        return UnaryOp(ctx.NOT().getText(),ctx.exp4().accept(self)) if ctx.NOT() else ctx.exp5().accept(self)
 
     # exp5: sign_operators exp5 | exp6;
     def visitExp5(self,ctx:BKITParser.Exp5Context):
-        return None
+        return UnaryOp(ctx.sign_operators(),ctx.exp5().accept(self)) if ctx.sign_operators() else ctx.exp6().accept(self)
 
     # exp6: exp6 index_operators | exp7;
     def visitExp6(self,ctx:BKITParser.Exp6Context):
-        return None
+        return ArrayCell(ctx.exp6().accept(self),ctx.index_operators().accept(self)) if ctx.index_operators() else ctx.exp7().accept(self)
 
     # exp7: function_call | LEFT_PAREN exp RIGHT_PAREN | operands;
     def visitExp7(self,ctx:BKITParser.Exp7Context):
-        return None
+        if ctx.getChildCount() > 1:
+            return ctx.exp().accept(self)
+        else:
+            return ctx.function_call().accept(self) if ctx.function_call() else ctx.operands().accept(self)
 
     # exp_list: exp COMMA exp_list | exp;
     def visitExp_list(self,ctx:BKITParser.Exp_listContext):
-        return None
+        return ctx.exp().accept(self) + ctx.exp_list().accept(self) if ctx.exp_list() else ctx.exp().accept(self)
 
     # operands: ID | literal | element_exp;
     def visitOperands(self,ctx:BKITParser.OperandsContext):
-        return None
+        return Id(ctx.ID().getText()) if ctx.ID() else ctx.literal().accept(self) if ctx.literal() else ctx.element_exp().accept(self)
 
     # multiplying_operators: MULTI | MULTI_F | DIV | DIV_F | MOD;
     def visitMultiplying_operators(self,ctx:BKITParser.Multiplying_operatorsContext):
-        return None
+        return ctx.getText()
 
     # adding_operators: ADD | ADD_F | SUB | SUB_F;
     def visitAdding_operators(self,ctx:BKITParser.Adding_operatorsContext):
-        return None
+        return ctx.getText()
 
     # sign_operators: SUB| SUB_F;
     def visitSign_operators(self,ctx:BKITParser.Sign_operatorsContext):
-        return None
+        return ctx.getText()
 
     # boolean_operators: ANDAND | OROR;
     def visitBoolean_operators(self,ctx:BKITParser.Boolean_operatorsContext):
-        return None
+        return ctx.getText()
 
     # relational_operators: EQUAL | NOT_EQUAL | LESS_THAN | GREATER_THAN | GREATER_EQUAL | LESS_EQUAL | NOT_EQUAL_F | LESS_THAN_F | GREATER_THAN_F | GREATER_EQUAL_F | LESS_EQUAL_F;
     def visitRelational_operators(self,ctx:BKITParser.Relational_operatorsContext):
-        return None
+        return ctx.getText()
 
     # element_exp: expr_index index_operators;
     def visitElement_exp(self,ctx:BKITParser.Element_expContext):
-        return None
+        return ctx.expr_index().accept(self) + ctx.index_operators().accept(self)
 
     # index_operators: LEFT_BRACKET exp RIGHT_BRACKET | LEFT_BRACKET exp RIGHT_BRACKET index_operators;
     def visitIndex_operators(self,ctx:BKITParser.Index_operatorsContext):
-        return None
+        return ctx.exp().accept(self) + ctx.index_operators().accept(self)  if ctx.index_operators() else ctx.exp().accept(self)
 
     # expr_index: ID | function_call;
     def visitExpr_index(self,ctx:BKITParser.Expr_indexContext):
-        return None
+        return Id(ctx.ID().getText()) if ctx.ID() else ctx.function_call().accept(self)
 

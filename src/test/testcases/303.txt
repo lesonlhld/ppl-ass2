@@ -1,3 +1,1 @@
-Function: foo
-                    Body:
-                    EndBody.
+Var:x[0x13];
