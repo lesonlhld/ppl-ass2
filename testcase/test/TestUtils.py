@@ -121,7 +121,8 @@ class TestAST:
 
         output = line if len(line) > 0 else ""
         testfile.write(line + """
-        self.assertTrue(TestAST.checkASTGen(input,expect,"""+str(TestAST._TestAST__count)+"""))""")
+        self.assertTrue(TestAST.checkASTGen(input,expect,"""+str(TestAST._TestAST__count)+"""))
+        """)
         testfile.close()
         TestAST.__count += 1
 

@@ -10,6 +10,15 @@ from BKITParser import BKITParser
 from lexererr import *
 from ASTGeneration import ASTGeneration
 
+testcase = "./test/ASTGenSuite.txt"
+testfile = open(testcase,"a")
+testfile.write("""import unittest
+from TestUtils import TestAST
+from AST import *
+
+class ASTGenSuite(unittest.TestCase):""")
+testfile.close()
+
 class TestUtil:
     @staticmethod
     def makeSource(inputStr,num):
@@ -87,8 +96,17 @@ class TestParser:
         return line == expect
 
 class TestAST:
+    __count = 301
     @staticmethod
     def checkASTGen(input,expect,num):
+        testcase = "./test/ASTGenSuite.txt"
+        testfile = open(testcase,"a")
+        testfile.write("""
+    def test_""" + str(TestAST._TestAST__count)+"""(self):
+        \"\"\"Created automatically\"\"\"
+        input = r\"\"\"""" + input + """\"\"\" 
+        expect = """)
+
         inputfile = TestUtil.makeSource(input,num)
         dest = open("./test/solutions/" + str(num) + ".txt","w")
         lexer = BKITLexer(inputfile)
@@ -100,5 +118,13 @@ class TestAST:
         dest.close()
         dest = open("./test/solutions/" + str(num) + ".txt","r")
         line = dest.read()
+
+        output = line if len(line) > 0 else ""
+        testfile.write(line + """
+        self.assertTrue(TestAST.checkASTGen(input,expect,"""+str(TestAST._TestAST__count)+"""))
+        """)
+        testfile.close()
+        TestAST.__count += 1
+
         return line == str(expect)
         
