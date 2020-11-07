@@ -1,6 +1,7 @@
-Function: array 
-        Parameter: i , j, arr[1001]
+
+        Function: parameter 
+        Parameter: a, b,c[123] ,d[123][234][0]  ,e
         Body: 
-            a[i] = arr[c[2+j][b[i]*3]] + 4;
-            i = i + 1;
+            a=1;
         EndBody.
+        

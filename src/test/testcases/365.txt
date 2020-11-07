@@ -1,0 +1,6 @@
+Function: array 
+        Parameter: i , j, arr[1001]
+        Body: 
+            a[i] = arr[c[2+j][b[i]*4]] + 4;
+            i = i + 1;
+        EndBody.

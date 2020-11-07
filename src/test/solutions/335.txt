@@ -1,0 +1,1 @@
+Program([FuncDecl(Id(precedence)[],([][Assign(Id(x),UnaryOp(-,BinaryOp(+,UnaryOp(-,FloatLiteral(15.e-1)),BinaryOp(*,BinaryOp(*.,UnaryOp(-.,FloatLiteral(45.1)),FloatLiteral(2.4)),BinaryOp(+,BinaryOp(+,IntLiteral(45),IntLiteral(108)),ArrayCell(Id(a),[IntLiteral(4)]))))))]))])

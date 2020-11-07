@@ -1,0 +1,7 @@
+Function: iFElseIFNotElse 
+        Parameter: n
+        Body: 
+            If bool_of_string("True") Then
+                a = int_of_string (read ());
+            EndIf.
+        EndBody.

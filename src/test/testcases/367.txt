@@ -1,0 +1,2 @@
+
+        Var: stringinarray, x[124]={"STRING","aRraY1","Array2"};

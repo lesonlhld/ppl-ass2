@@ -1,1 +1,1 @@
-Program([FuncDecl(Id(fullIf)[],([][If(BinaryOp(==,Id(x),BinaryOp(!=,Id(b),BinaryOp(&&,Id(c),BinaryOp(>,Id(a),BinaryOp(+,Id(b),Id(c)))))),[],[Return()])ElseIf(BinaryOp(==,Id(x),StringLiteral(Chung Xon@@)),[],[Break()])Else([],[Assign(Id(x),StringLiteral(successful))])]))])
+Program([FuncDecl(Id(main)[],([][Assign(Id(a),IntLiteral(865))]))])

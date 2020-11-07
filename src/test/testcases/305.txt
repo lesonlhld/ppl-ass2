@@ -1,5 +1,7 @@
-Function: stmtcallinindex 
-        Parameter: n
+ 
+        Function: test_lan_1 
+        Parameter: global_var
         Body: 
-            a = 3*.4.5\0e-2+arr[3-function("call")];
+            dayLA1_teNbIen = 25+6-.2.5%3\100 ; 
         EndBody.
+        

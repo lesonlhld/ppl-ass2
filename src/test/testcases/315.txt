@@ -1,0 +1,10 @@
+Function: hellomoinguoi 
+        Parameter: n
+        Body: 
+            If n <=. 1.2E-4 Then
+            n=n*.3.3;
+            ElseIf n>.100.2 Then
+            n=n\.5;
+            EndIf.
+        EndBody.
+        

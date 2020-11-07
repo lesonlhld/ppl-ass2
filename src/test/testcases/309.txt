@@ -1,8 +1,4 @@
-Function: fullIf 
-        Body: 
-            If (x == (b!=c && (a > b + c))) Then Return;
-            ElseIf (x=="Chung Xon@@") Then Break;
-            Else 
-            x="successful";
-            EndIf.
-        EndBody.
+**sau day la 1 ham \\ main\n**
+Function:**het y r** main ** test ne;**
+**cmt tum lum ~!$()>?:{}**    Body: a=**235**865;
+    EndBody **Body**.

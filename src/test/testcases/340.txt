@@ -1,0 +1,6 @@
+Function: ifOKE 
+        Body: 
+            If n == 0 Then
+                x = 3;
+            EndIf.
+        EndBody.

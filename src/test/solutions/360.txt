@@ -1,0 +1,1 @@
+Program([FuncDecl(Id(callmore)[],([][CallStmt(Id(call),[Id(a)])]))])

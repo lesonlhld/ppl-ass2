@@ -1,2 +1,5 @@
-
-        Var: stringinarray, x[123]={"STRING","aRraY1","Array2"};
+Function: keyword 
+        Body: 
+            Dooo=1; While True
+            EndDo.
+        EndBody.

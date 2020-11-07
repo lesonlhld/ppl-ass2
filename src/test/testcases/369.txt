@@ -1,0 +1,6 @@
+Function: array
+        Parameter: x[124]
+        Body:
+            Var: i = 0;
+            x[124]={996,712,216};
+        EndBody.

@@ -1,4 +1,9 @@
-Function: multicallstmt
-        Body:
-            a =-((func1(a)+23) * -func2(4)+arr[3])\. 0.5;
+Function: iDenTIfier_SS__ 
+        Parameter: varrr
+        Body: 
+            **Do
+                x= x+1;
+            While x>1 
+            EndDo.
+            **
         EndBody.

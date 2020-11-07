@@ -1,0 +1,1 @@
+Program([FuncDecl(Id(signop)[VarDecl(Id(n))],([][Assign(Id(a),UnaryOp(-,IntLiteral(1082000))),Assign(Id(b),UnaryOp(-,IntLiteral(1194957))),Assign(Id(c),UnaryOp(-,IntLiteral(8933))),Assign(Id(d),UnaryOp(-,Id(a))),Assign(Id(c),UnaryOp(-,CallExpr(Id(call),[Id(a)]))),Assign(Id(b),UnaryOp(-.,FloatLiteral(352.4E-12)))]))])

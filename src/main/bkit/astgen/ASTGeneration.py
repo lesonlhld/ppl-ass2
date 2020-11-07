@@ -214,7 +214,7 @@ class ASTGeneration(BKITVisitor):
     # call_stmt: ID LEFT_PAREN exp_list? RIGHT_PAREN SEMI;
     def visitCall_stmt(self,ctx:BKITParser.Call_stmtContext):
         method = Id(ctx.ID().getText())
-        param = ctx.exp_list().accept(self)
+        param = ctx.exp_list().accept(self) if ctx.exp_list() else []
         return CallStmt(method, param)
 
     # return_stmt: RETURN exp? SEMI;
@@ -224,7 +224,7 @@ class ASTGeneration(BKITVisitor):
     # function_call: ID LEFT_PAREN exp_list? RIGHT_PAREN;
     def visitFunction_call(self,ctx:BKITParser.Function_callContext):
         method = Id(ctx.ID().getText())
-        param = ctx.exp_list().accept(self)
+        param = ctx.exp_list().accept(self) if ctx.exp_list() else []
         return CallExpr(method, param)
 
     # exp: exp1 relational_operators exp1 | exp1;

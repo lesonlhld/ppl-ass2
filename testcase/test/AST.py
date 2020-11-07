@@ -146,7 +146,7 @@ class FloatLiteral(Literal):
     value:float
 
     def __str__(self):
-        return "FloatLiteral(" + str(self.value) + ")"
+        return "FloatLiteral(\"" + str(self.value) + "\")"
 
     def accept(self, v, param):
         return v.visitFloatLiteral(self, param)
@@ -155,6 +155,7 @@ class StringLiteral(Literal):
     value:str
 
     def __str__(self):
+        self.value = self.value.replace('\\', '\\\\')
         return "StringLiteral(\"" + self.value + "\")"
 
     def accept(self, v, param):

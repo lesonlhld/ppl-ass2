@@ -1,0 +1,1 @@
+Program([FuncDecl(Id(complexarray)[],([][Assign(ArrayCell(Id(x),[IntLiteral(124)]),ArrayLiteral(StringLiteral(duwat74\r \t),StringLiteral(@#&\n rwFEW54),IntLiteral(54412),FloatLiteral(10.e14),FloatLiteral(0.124),FloatLiteral(544.0e-6),ArrayLiteral(StringLiteral(xe mau xanh)),StringLiteral(xe mau do)))]))])

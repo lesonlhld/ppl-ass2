@@ -1,0 +1,10 @@
+Function: signop
+        Parameter: n
+        Body:
+            a = -1082000;
+            b = -0X123BCD;
+            c = -0o21345;
+            d = -a;
+            c = -call(a);
+            b = -.352.4E-12 ;
+        EndBody.
