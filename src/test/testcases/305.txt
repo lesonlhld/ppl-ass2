@@ -1,2 +1,5 @@
-Var:x;
-        Var: x=12;
+Function: stmtcallinindex 
+        Parameter: n
+        Body: 
+            a = 3*.4.5\0e-2+arr[3-function("call")];
+        EndBody.

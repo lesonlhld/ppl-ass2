@@ -1,5 +1,6 @@
-Function: foo 
-        Parameter: n 
+Function: array 
+        Parameter: i , j, arr[1001]
         Body: 
-            Var: x[12]={12};
+            a[i] = arr[c[2+j][b[i]*3]] + 4;
+            i = i + 1;
         EndBody.

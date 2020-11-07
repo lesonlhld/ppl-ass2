@@ -5,51 +5,266 @@ from AST import *
 class ASTGenSuite(unittest.TestCase):
     def test_301(self):
         """Created automatically"""
-        input = r"""Var:x =5 ;""" 
-        output = Program([VarDecl(Id("x"),[],IntLiteral(5))])
-        self.assertTrue(TestAST.checkASTGen(input,output,301))
+        input = r"""
+            Function: returnboolean
+            Body:
+            If str == "Chung Xon" Then
+                Return True;
+            Else
+                Return False;
+                EndIf.
+            EndBody.""" 
+        expect = Program([FuncDecl(Id("returnboolean"),[],([],[If([(BinaryOp("==",Id("str"),StringLiteral("Chung Xon")),[],[Return(BooleanLiteral(True))])],([],[Return(BooleanLiteral(False))]))]))])
+        self.assertTrue(TestAST.checkASTGen(input,expect,301))
     def test_302(self):
         """Created automatically"""
-        input = r"""Var:x[12];""" 
-        output = Program([VarDecl(Id("x"),[12],None)])
-        self.assertTrue(TestAST.checkASTGen(input,output,302))
+        input = r"""Function: callmore
+        Body: 
+            call(a);
+        EndBody.""" 
+        expect = Program([FuncDecl(Id("callmore"),[],([],[CallStmt(Id("call"),[Id("a")])]))])
+        self.assertTrue(TestAST.checkASTGen(input,expect,302))
     def test_303(self):
         """Created automatically"""
-        input = r"""Var:x[0x13];""" 
-        output = Program([VarDecl(Id("x"),[19],None)])
-        self.assertTrue(TestAST.checkASTGen(input,output,303))
+        input = r"""Function: indexop
+        Parameter: n
+        Body: 
+            a[a[3 + foo(2)][b||True]][b[b[1+0x369]]] = a[b[2][b[12E-9]*3]] + 4;
+        EndBody.""" 
+        expect = Program([FuncDecl(Id("indexop"),[VarDecl(Id("n"),[],None)],([],[Assign(ArrayCell(Id("a"),[ArrayCell(ArrayCell(Id("a"),[BinaryOp("+",IntLiteral(3),CallExpr(Id("foo"),[IntLiteral(2)]))]),[BinaryOp("||",Id("b"),BooleanLiteral(True))]),ArrayCell(Id("b"),[ArrayCell(Id("b"),[BinaryOp("+",IntLiteral(1),IntLiteral(873))])])]),BinaryOp("+",ArrayCell(Id("a"),[ArrayCell(ArrayCell(Id("b"),[IntLiteral(2)]),[BinaryOp("*",ArrayCell(Id("b"),[FloatLiteral(12E-9)]),IntLiteral(3))])]),IntLiteral(4)))]))])
+        self.assertTrue(TestAST.checkASTGen(input,expect,303))
     def test_304(self):
         """Created automatically"""
-        input = r"""Var:x[0x12][13]=5;""" 
-        output = Program([VarDecl(Id("x"),[18,13],IntLiteral(5))])
-        self.assertTrue(TestAST.checkASTGen(input,output,304))
+        input = r"""Function: arraynull
+        Body: 
+            a[12] = {  };
+            x[45]={{{{{}}}}};
+
+        EndBody.""" 
+        expect = Program([FuncDecl(Id("arraynull"),[],([],[Assign(ArrayCell(Id("a"),[IntLiteral(12)]),ArrayLiteral([])),Assign(ArrayCell(Id("x"),[IntLiteral(45)]),ArrayLiteral([ArrayLiteral([ArrayLiteral([ArrayLiteral([ArrayLiteral([])])])])]))]))])
+        self.assertTrue(TestAST.checkASTGen(input,expect,304))
     def test_305(self):
         """Created automatically"""
-        input = r"""Var:x;
-        Var: x=12;""" 
-        output = Program([VarDecl(Id("x"),[],None),VarDecl(Id("x"),[],IntLiteral(12))])
-        self.assertTrue(TestAST.checkASTGen(input,output,305))
+        input = r"""Function: stmtcallinindex 
+        Parameter: n
+        Body: 
+            a = 3*.4.5\0e-2+arr[3-function("call")];
+        EndBody.""" 
+        expect = Program([FuncDecl(Id("stmtcallinindex"),[VarDecl(Id("n"),[],None)],([],[Assign(Id("a"),BinaryOp("+",BinaryOp("\\",BinaryOp("*.",IntLiteral(3),FloatLiteral(4.5)),FloatLiteral(0e-2)),ArrayCell(Id("arr"),[BinaryOp("-",IntLiteral(3),CallExpr(Id("function"),[StringLiteral("call")]))])))]))])
+        self.assertTrue(TestAST.checkASTGen(input,expect,305))
     def test_306(self):
         """Created automatically"""
-        input = r"""Var: x[12]={12};""" 
-        output = Program([VarDecl(Id("x"),[12],ArrayLiteral([IntLiteral(12)]))])
-        self.assertTrue(TestAST.checkASTGen(input,output,306))
+        input = r"""Function: calculate 
+        Parameter: n
+        Body: 
+            Var: a = {1,2,3}, b[2][3] = 5, c[2] = {{1,3},{3,5,7}};
+            a[3+foo(3)] = a[b[2][3]] + 4;
+        EndBody.""" 
+        expect = Program([FuncDecl(Id("calculate"),[VarDecl(Id("n"),[],None)],([VarDecl(Id("a"),[],ArrayLiteral([IntLiteral(1),IntLiteral(2),IntLiteral(3)])),VarDecl(Id("b"),[2,3],IntLiteral(5)),VarDecl(Id("c"),[2],ArrayLiteral([ArrayLiteral([IntLiteral(1),IntLiteral(3)]),ArrayLiteral([IntLiteral(3),IntLiteral(5),IntLiteral(7)])]))],[Assign(ArrayCell(Id("a"),[BinaryOp("+",IntLiteral(3),CallExpr(Id("foo"),[IntLiteral(3)]))]),BinaryOp("+",ArrayCell(Id("a"),[ArrayCell(ArrayCell(Id("b"),[IntLiteral(2)]),[IntLiteral(3)])]),IntLiteral(4)))]))])
+        self.assertTrue(TestAST.checkASTGen(input,expect,306))
     def test_307(self):
         """Created automatically"""
-        input = r"""Var: arr[5][6] = {1,2}, y[1];""" 
-        output = Program([VarDecl(Id("arr"),[5,6],ArrayLiteral([IntLiteral(1),IntLiteral(2)])),VarDecl(Id("y"),[1],None)])
-        self.assertTrue(TestAST.checkASTGen(input,output,307))
+        input = r"""Function: iFElseIFNotElse 
+        Parameter: n
+        Body: 
+            If bool_of_string("True") Then
+                a = int_of_string (read ());
+            ElseIf n =/= 1.08 Then
+                b = float_of_int (a) +. 2.0;
+            ElseIf False Then
+                Return n;
+            EndIf.
+        EndBody.""" 
+        expect = 
+    def test_307(self):
+        """Created automatically"""
+        input = r"""Function: mmmmm
+        Body: 
+            Do
+                While(1) Do
+                foo (2 + x, 4. \. y);goo ();
+            EndWhile.
+            While(1)
+            EndDo.
+        EndBody.""" 
+        expect = 
+    def test_307(self):
+        """Created automatically"""
+        input = r"""Function: fibo
+        Parameter: n
+        Body:
+            Var: n, t1 = 0, t2 = 1, nextTerm = 0;
+            print("Enter the number of terms: ");
+            getline(n);
+            print("Fibonacci Series: ");
+            For (i = 1, i <= n, 1) Do
+                If(i == 1) Then
+                print(" " + t1);
+                Continue;
+                EndIf.
+            If(i == 2) Then
+                print( t2+" ");
+        Continue;
+        EndIf.
+        nextTerm = t1 + t2;
+        t1 = t2;
+        t2 = nextTerm;
+        
+        print(nextTerm + " ");
+    EndFor.
+    Return 0;
+    EndBody.""" 
+        expect = Program([FuncDecl(Id("fibo"),[VarDecl(Id("n"),[],None)],([VarDecl(Id("n"),[],None),VarDecl(Id("t1"),[],IntLiteral(0)),VarDecl(Id("t2"),[],IntLiteral(1)),VarDecl(Id("nextTerm"),[],IntLiteral(0))],[CallStmt(Id("print"),[StringLiteral("Enter the number of terms: ")]),CallStmt(Id("getline"),[Id("n")]),CallStmt(Id("print"),[StringLiteral("Fibonacci Series: ")]),For(Id("i"),IntLiteral(1),BinaryOp("<=",Id("i"),Id("n")),IntLiteral(1),([],[If([(BinaryOp("==",Id("i"),IntLiteral(1)),[],[CallStmt(Id("print"),[BinaryOp("+",StringLiteral(" "),Id("t1"))]),Continue()])],()),If([(BinaryOp("==",Id("i"),IntLiteral(2)),[],[CallStmt(Id("print"),[BinaryOp("+",Id("t2"),StringLiteral(" "))]),Continue()])],()),Assign(Id("nextTerm"),BinaryOp("+",Id("t1"),Id("t2"))),Assign(Id("t1"),Id("t2")),Assign(Id("t2"),Id("nextTerm")),CallStmt(Id("print"),[BinaryOp("+",Id("nextTerm"),StringLiteral(" "))])])),Return(IntLiteral(0))]))])
+        self.assertTrue(TestAST.checkASTGen(input,expect,307))
     def test_308(self):
         """Created automatically"""
-        input = r"""Function: foo 
-        Parameter: n 
+        input = r"""Function: array 
+        Parameter: i , j, arr[1001]
         Body: 
-            Var: x[12]={12};
+            a[i] = arr[c[2+j][b[i]*3]] + 4;
+            i = i + 1;
         EndBody.""" 
-        output = Program([FuncDecl(Id("foo"),[VarDecl(Id("n"),[],None)],([VarDecl(Id("x"),[12],ArrayLiteral([IntLiteral(12)]))],[]))])
-        self.assertTrue(TestAST.checkASTGen(input,output,308))
+        expect = Program([FuncDecl(Id("array"),[VarDecl(Id("i"),[],None),VarDecl(Id("j"),[],None),VarDecl(Id("arr"),[1001],None)],([],[Assign(ArrayCell(Id("a"),[Id("i")]),BinaryOp("+",ArrayCell(Id("arr"),[ArrayCell(ArrayCell(Id("c"),[BinaryOp("+",IntLiteral(2),Id("j"))]),[BinaryOp("*",ArrayCell(Id("b"),[Id("i")]),IntLiteral(3))])]),IntLiteral(4))),Assign(Id("i"),BinaryOp("+",Id("i"),IntLiteral(1)))]))])
+        self.assertTrue(TestAST.checkASTGen(input,expect,308))
     def test_309(self):
         """Created automatically"""
-        input = r"""Var: b = True, c = False;""" 
-        output = Program([VarDecl(Id("b"),[],BooleanLiteral(True)),VarDecl(Id("c"),[],BooleanLiteral(False))])
-        self.assertTrue(TestAST.checkASTGen(input,output,309))
+        input = r"""Function: fullIf 
+        Body: 
+            If (x == (b!=c && (a > b + c))) Then Return;
+            ElseIf (x=="Chung Xon@@") Then Break;
+            Else 
+            x="successful";
+            EndIf.
+        EndBody.""" 
+        expect = Program([FuncDecl(Id("fullIf"),[],([],[If([(BinaryOp("==",Id("x"),BinaryOp("!=",Id("b"),BinaryOp("&&",Id("c"),BinaryOp(">",Id("a"),BinaryOp("+",Id("b"),Id("c")))))),[],[Return(None)]),(BinaryOp("==",Id("x"),StringLiteral("Chung Xon@@")),[],[Break()])],([],[Assign(Id("x"),StringLiteral("successful"))]))]))])
+        self.assertTrue(TestAST.checkASTGen(input,expect,309))
+    def test_310(self):
+        """Created automatically"""
+        input = r"""Function: complexarray
+            Body: x[123]={"duwat73\r \t", "@#&\n rwFEW54",54312,10.e13, 0.123, 543.0e-6  ,{"xe mau xanh"},"xe mau do"};
+        EndBody.""" 
+        expect = Program([FuncDecl(Id("complexarray"),[],([],[Assign(ArrayCell(Id("x"),[IntLiteral(123)]),ArrayLiteral([StringLiteral("duwat73\r \t"),StringLiteral("@#&\n rwFEW54"),IntLiteral(54312),FloatLiteral(10.e13),FloatLiteral(0.123),FloatLiteral(543.0e-6),ArrayLiteral([StringLiteral("xe mau xanh")]),StringLiteral("xe mau do")]))]))])
+        self.assertTrue(TestAST.checkASTGen(input,expect,310))
+    def test_311(self):
+        """Created automatically"""
+        input = r"""Function: returnstring
+            Body:
+                Return "String'"";
+            EndBody.""" 
+        expect = Program([FuncDecl(Id("returnstring"),[],([],[Return(StringLiteral("String'""))]))])
+        self.assertTrue(TestAST.checkASTGen(input,expect,311))
+    def test_312(self):
+        """Created automatically"""
+        input = r"""Function: iflongnhau
+        Parameter: a, b
+        Body:
+        Var: id[4312][867][9856][867], stringID[108] = "day la \\ 1 chuoi !!",literal = 120000e-1,  array[2][3] = {{867,345,987},{76,12,744}};
+            If n > 10 Then
+                If n <. 20.5 Then Return x;
+                EndIf.
+                printStrLn(arg);
+            Else fact(x);
+            EndIf.
+        EndBody.""" 
+        expect = Program([FuncDecl(Id("iflongnhau"),[VarDecl(Id("a"),[],None),VarDecl(Id("b"),[],None)],([VarDecl(Id("id"),[4312,867,9856,867],None),VarDecl(Id("stringID"),[108],StringLiteral("day la \\ 1 chuoi !!")),VarDecl(Id("literal"),[],FloatLiteral(120000e-1)),VarDecl(Id("array"),[2,3],ArrayLiteral([ArrayLiteral([IntLiteral(867),IntLiteral(345),IntLiteral(987)]),ArrayLiteral([IntLiteral(76),IntLiteral(12),IntLiteral(744)])]))],[If([(BinaryOp(">",Id("n"),IntLiteral(10)),[],[If([(BinaryOp("<.",Id("n"),FloatLiteral(20.5)),[],[Return(Id("x"))])],()),CallStmt(Id("printStrLn"),[Id("arg")])])],([],[CallStmt(Id("fact"),[Id("x")])]))]))])
+        self.assertTrue(TestAST.checkASTGen(input,expect,312))
+    def test_313(self):
+        """Created automatically"""
+        input = r"""Function: multicallstmt
+        Body:
+            a =-((func1(a)+23) * -func2(4)+arr[3])\. 0.5;
+        EndBody.""" 
+        expect = Program([FuncDecl(Id("multicallstmt"),[],([],[Assign(Id("a"),BinaryOp("\.",UnaryOp("-",BinaryOp("+",BinaryOp("*",BinaryOp("+",CallExpr(Id("func1"),[Id("a")]),IntLiteral(23)),UnaryOp("-",CallExpr(Id("func2"),[IntLiteral(4)]))),ArrayCell(Id("arr"),[IntLiteral(3)]))),FloatLiteral(0.5)))]))])
+        self.assertTrue(TestAST.checkASTGen(input,expect,313))
+    def test_314(self):
+        """Created automatically"""
+        input = r"""
+        Var: stringinarray, x[123]={"STRING","aRraY1","Array2"};""" 
+        expect = Program([VarDecl(Id("stringinarray"),[],None),VarDecl(Id("x"),[123],ArrayLiteral([StringLiteral("STRING"),StringLiteral("aRraY1"),StringLiteral("Array2")]))])
+        self.assertTrue(TestAST.checkASTGen(input,expect,314))
+    def test_315(self):
+        """Created automatically"""
+        input = r"""Function: array
+        Parameter: x[123]
+        Body:
+            Var: i = 0;
+            x[123]={996,712,216};
+        EndBody.""" 
+        expect = Program([FuncDecl(Id("array"),[VarDecl(Id("x"),[123],None)],([VarDecl(Id("i"),[],IntLiteral(0))],[Assign(ArrayCell(Id("x"),[IntLiteral(123)]),ArrayLiteral([IntLiteral(996),IntLiteral(712),IntLiteral(216)]))]))])
+        self.assertTrue(TestAST.checkASTGen(input,expect,315))
+    def test_316(self):
+        """Created automatically"""
+        input = r"""Function: more1
+        Parameter: a[5], b
+        Body:
+        Var: x = {{1,2,3}, **Comment here** "abc"};
+        Var: i = 0;
+        While (i < 5) Do
+        If i == 3 ThenReturn 1;EndIf.
+        i = i + 1;
+        EndWhile.
+        EndBody.""" 
+        expect = Program([FuncDecl(Id("more1"),[VarDecl(Id("a"),[5],None),VarDecl(Id("b"),[],None)],([VarDecl(Id("x"),[],ArrayLiteral([ArrayLiteral([IntLiteral(1),IntLiteral(2),IntLiteral(3)]),StringLiteral("abc")])),VarDecl(Id("i"),[],IntLiteral(0))],[While(BinaryOp("<",Id("i"),IntLiteral(5)),([],[If([(BinaryOp("==",Id("i"),IntLiteral(3)),[],[Return(IntLiteral(1))])],()),Assign(Id("i"),BinaryOp("+",Id("i"),IntLiteral(1)))]))]))])
+        self.assertTrue(TestAST.checkASTGen(input,expect,316))
+    def test_317(self):
+        """Created automatically"""
+        input = r"""Function: callmore
+        Body: 
+            call(var*a,876,.65e-1,arr[3],True,"chuoi~~\n");
+        EndBody.""" 
+        expect = Program([FuncDecl(Id("callmore"),[],([],[CallStmt(Id("call"),[BinaryOp("*",Id("var"),Id("a")),IntLiteral(876),FloatLiteral(65e-1),ArrayCell(Id("arr"),[IntLiteral(3)]),BooleanLiteral(True),StringLiteral("chuoi~~\n")])]))])
+        self.assertTrue(TestAST.checkASTGen(input,expect,317))
+    def test_318(self):
+        """Created automatically"""
+        input = r"""Function: precedence 
+        Body: 
+            x = -(-15.e-1+(-.45.1*.2.3)*(35+108+a[4]));
+        EndBody.""" 
+        expect = Program([FuncDecl(Id("precedence"),[],([],[Assign(Id("x"),UnaryOp("-",BinaryOp("+",UnaryOp("-",FloatLiteral(15.e-1)),BinaryOp("*",BinaryOp("*.",UnaryOp("-.",FloatLiteral(45.1)),FloatLiteral(2.3)),BinaryOp("+",BinaryOp("+",IntLiteral(35),IntLiteral(108)),ArrayCell(Id("a"),[IntLiteral(4)]))))))]))])
+        self.assertTrue(TestAST.checkASTGen(input,expect,318))
+    def test_319(self):
+        """Created automatically"""
+        input = r"""Function: arrayinarray 
+                Parameter: x[2][3]
+        Body:
+            Var: i = 0;
+            x[2][3]={{867,345,987},{76,12,744}};
+        EndBody.""" 
+        expect = Program([FuncDecl(Id("arrayinarray"),[VarDecl(Id("x"),[2,3],None)],([VarDecl(Id("i"),[],IntLiteral(0))],[Assign(ArrayCell(Id("x"),[IntLiteral(2),IntLiteral(3)]),ArrayLiteral([ArrayLiteral([IntLiteral(867),IntLiteral(345),IntLiteral(987)]),ArrayLiteral([IntLiteral(76),IntLiteral(12),IntLiteral(744)])]))]))])
+        self.assertTrue(TestAST.checkASTGen(input,expect,319))import unittest
+from TestUtils import TestAST
+from AST import *
+
+class ASTGenSuite(unittest.TestCase):
+    def test_301(self):
+        """Created automatically"""
+        input = r"""Function: callmore
+        Body: 
+            call(a,876,4.65e-1,arr[3],True,"chuoi~~\n");
+        EndBody.""" 
+        expect = Program([FuncDecl(Id("callmore"),[],([],[CallStmt(Id("call"),[Id("a"),IntLiteral(876),FloatLiteral(4.65e-1),ArrayCell(Id("arr"),[IntLiteral(3)]),BooleanLiteral(True),StringLiteral("chuoi~~\n")])]))])
+        self.assertTrue(TestAST.checkASTGen(input,expect,301))import unittest
+from TestUtils import TestAST
+from AST import *
+
+class ASTGenSuite(unittest.TestCase):
+    def test_301(self):
+        """Created automatically"""
+        input = r"""Function: callmore
+        Body: 
+            call(a,876,4.65e-1,arr[3],True,"chuoi~~\n");
+        EndBody.""" 
+        expect = Program([FuncDecl(Id("callmore"),[],([],[CallStmt(Id("call"),[Id("a"),IntLiteral(876),FloatLiteral(4.65e-1),ArrayCell(Id("arr"),[IntLiteral(3)]),BooleanLiteral(True),StringLiteral("chuoi~~\n")])]))])
+        self.assertTrue(TestAST.checkASTGen(input,expect,301))import unittest
+from TestUtils import TestAST
+from AST import *
+
+class ASTGenSuite(unittest.TestCase):
+    def test_301(self):
+        """Created automatically"""
+        input = r"""Function: callmore
+        Body: 
+            call(a,876,4.65e-1,arr[3],True,"chuoi~~\n");
+        EndBody.""" 
+        expect = Program([FuncDecl(Id("callmore"),[],([],[CallStmt(Id("call"),[Id("a"),IntLiteral(876),FloatLiteral(4.65e-1),ArrayCell(Id("arr"),[IntLiteral(3)]),BooleanLiteral(True),StringLiteral("chuoi~~\n")])]))])
+        self.assertTrue(TestAST.checkASTGen(input,expect,301))

@@ -1,1 +1,4 @@
-Var:x[12];
+Function: callmore
+        Body: 
+            call(a);
+        EndBody.

@@ -193,9 +193,9 @@ stmt_list: var_list? stmt*;
 
 assign_stmt: ID index_operators? ASSIGN exp SEMI;
 
-if_stmt: IF exp THEN stmt_list else_if (ELSE stmt_list)? ENDIF DOT;
+if_stmt: IF exp THEN stmt_list else_if? (ELSE stmt_list)? ENDIF DOT;
 
-else_if: ELSEIF exp THEN stmt_list else_if | ELSEIF exp THEN stmt_list |;
+else_if: ELSEIF exp THEN stmt_list else_if | ELSEIF exp THEN stmt_list;
 
 for_stmt: FOR LEFT_PAREN for_condition RIGHT_PAREN DO stmt_list ENDFOR DOT;
 
@@ -250,7 +250,7 @@ relational_operators: EQUAL | NOT_EQUAL | LESS_THAN | GREATER_THAN | GREATER_EQU
 
 element_exp: expr_index index_operators;
 
-index_operators: LEFT_BRACKET exp RIGHT_BRACKET | LEFT_BRACKET exp RIGHT_BRACKET index_operators;
+index_operators: LEFT_BRACKET exp RIGHT_BRACKET index_operators | LEFT_BRACKET exp RIGHT_BRACKET;
 
 expr_index: ID | function_call;
 

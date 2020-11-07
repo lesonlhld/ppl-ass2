@@ -1,1 +1,2 @@
-Var: b = True, c = False;
+
+        Var: stringinarray, x[123]={"STRING","aRraY1","Array2"};

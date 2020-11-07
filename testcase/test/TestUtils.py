@@ -105,7 +105,7 @@ class TestAST:
     def test_""" + str(TestAST._TestAST__count)+"""(self):
         \"\"\"Created automatically\"\"\"
         input = r\"\"\"""" + input + """\"\"\" 
-        output = """)
+        expect = """)
 
         inputfile = TestUtil.makeSource(input,num)
         dest = open("./test/solutions/" + str(num) + ".txt","w")
@@ -119,8 +119,9 @@ class TestAST:
         dest = open("./test/solutions/" + str(num) + ".txt","r")
         line = dest.read()
 
+        output = line if len(line) > 0 else ""
         testfile.write(line + """
-        self.assertTrue(TestAST.checkASTGen(input,output,"""+str(TestAST._TestAST__count)+"""))""")
+        self.assertTrue(TestAST.checkASTGen(input,expect,"""+str(TestAST._TestAST__count)+"""))""")
         testfile.close()
         TestAST.__count += 1
 

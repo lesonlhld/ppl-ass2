@@ -1,1 +1,1 @@
-Program([VarDecl(Id(x))])
+Program([FuncDecl(Id(complexarray)[],([][Assign(ArrayCell(Id(x),[IntLiteral(123)]),ArrayLiteral(StringLiteral(duwat73\r \t),StringLiteral(@#&\n rwFEW54),IntLiteral(54312),FloatLiteral(10.e13),FloatLiteral(0.123),FloatLiteral(543.0e-6),ArrayLiteral(StringLiteral(xe mau xanh)),StringLiteral(xe mau do)))]))])
