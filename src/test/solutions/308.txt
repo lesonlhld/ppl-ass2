@@ -1,1 +1,1 @@
-Program([FuncDecl(Id("lan2"),[VarDecl(Id("var"),[],None)],([],[]))])
+Program([FuncDecl(Id(lan2)[VarDecl(Id(var))],([][]))])

@@ -1,1 +1,1 @@
-Program([VarDecl(Id("x"),[],FloatLiteral(0.00052))])
+Program([VarDecl(Id(x),FloatLiteral(0.00052))])

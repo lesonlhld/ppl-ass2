@@ -1,1 +1,1 @@
-Program([FuncDecl(Id("foo"),[VarDecl(Id("a"),[],None)],([],[Assign(Id("x"),IntLiteral(3))]))])
+Program([FuncDecl(Id(foo)[VarDecl(Id(a))],([][Assign(Id(x),IntLiteral(3))]))])

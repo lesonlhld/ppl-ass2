@@ -1120,7 +1120,7 @@ Function: d**Here some too**Parameter: d Body: EndBody."""
                 check = False;
             EndIf.
         EndBody.""" 
-        expect = Program([FuncDecl(Id("ifOKE"),[],([],[If([(BinaryOp("==",Id("n"),IntLiteral(0)),[],[Assign(Id("x"),IntLiteral(3))])],(BinaryOp("!=",Id("x"),IntLiteral(2)),[],[Assign(Id("check"),BooleanLiteral(False))])],())]))])
+        expect = Program([FuncDecl(Id("ifOKE"),[],([],[If([(BinaryOp("==",Id("n"),IntLiteral(0)),[],[Assign(Id("x"),IntLiteral(3))]),ElseIf(BinaryOp("!=",Id("x"),IntLiteral(2)),[],[Assign(Id("check"),BooleanLiteral(False))])],())]))])
         self.assertTrue(TestAST.checkASTGen(input,expect,394))
         
     def test_395(self):
