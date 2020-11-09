@@ -1,7 +1,0 @@
-Function: positionoflogicalop 
-        Parameter: n
-        Body: 
-            While (True) Do
-                logic=a&&var!variable;
-            EndWhile.
-        EndBody.

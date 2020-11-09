@@ -1,6 +1,0 @@
- Function: nobody
-        Body:
-            If x==i Then Break;
-            EndIf. 
-        EndBody.
-        

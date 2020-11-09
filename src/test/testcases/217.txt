@@ -1,6 +1,0 @@
-Function: double__PARAM
-        Parameter: n
-        Parameter: n
-        Body: 
-        x = 10; 
-        EndBody.

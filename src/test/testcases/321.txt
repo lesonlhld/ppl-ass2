@@ -1,9 +1,0 @@
-Function: iDenTIfier_SS__ 
-        Parameter: varrr
-        Body: 
-            **Do
-                x= x+1;
-            While x>1 
-            EndDo.
-            **
-        EndBody.

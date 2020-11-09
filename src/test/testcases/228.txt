@@ -1,5 +1,0 @@
-Function: keyword 
-        Body: 
-            Dooo=1; While True
-            EndDo.
-        EndBody.

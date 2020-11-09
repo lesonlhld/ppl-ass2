@@ -1,1 +1,0 @@
-Function:fooParameter:nBody:Ifn==0ThenReturn1;ElseReturnn*fact(n-1);ElseReturnn;EndIf.EndBody.

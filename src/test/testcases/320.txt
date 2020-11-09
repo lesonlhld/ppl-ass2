@@ -1,2 +1,0 @@
-Var **test comment**: **bien = "STRING"**
-        ****fu={0X743A5,0o26523,321 **cmt**}****;****

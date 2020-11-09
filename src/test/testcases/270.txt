@@ -1,7 +1,0 @@
-Function: notexpr 
-        Parameter: n
-        Body: 
-            Do  
-                Return 1;
-            While EndDo.
-        EndBody.

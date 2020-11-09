@@ -30,7 +30,7 @@ with open("./target/BKITParser.py") as fp:
                     if i != -1 and cmt[0] != '/':
                         comment = cmt
 
-            fo.write("""    # """ + (comment if len(comment) > 0 else "\n") + """    def visit""" + line[index + 6:-28] + """(self,ctx:BKITParser.""" + line[index + 6:-21] + """):
+            fo.write("""    # """ + (comment if len(comment) > 0 else "\n") + """    def visit""" + line[index + 6:-28] + """(self, ctx:BKITParser.""" + line[index + 6:-21] + """):
         return None
 
 """)

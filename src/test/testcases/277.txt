@@ -1,2 +1,0 @@
-Var: callnotinfunction
-            goo(x,y*2,z+3.00000003);

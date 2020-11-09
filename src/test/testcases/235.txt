@@ -1,5 +1,0 @@
-Function: test_precedence___ 
-        Parameter: n
-        Body: 
-            x = !(!(!a && b) || (c >. 3.e+3) !(d < 2));
-        EndBody.

@@ -1,7 +1,0 @@
-
-        Function: foofail
-        Parameter: x
-        Body: 
-            For (, ,                    
-            ) Do x=6; EndFor.
-        EndBody.

@@ -1,1 +1,0 @@
-{"STRING","aRraY1","Array2"}

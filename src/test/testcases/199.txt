@@ -1,4 +1,0 @@
- **global declaration**  Var: a = 5;
-        Varr: b[2][3] = {{2,3,4},{4,5,6}};
-        Varrr: c, d = 6, e, f;
-        Var: m, n[10];

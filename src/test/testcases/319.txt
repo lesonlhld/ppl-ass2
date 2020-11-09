@@ -1,5 +1,0 @@
-Function: multivscmt 
-        Body: 
-            Var: a = 100, b;
-            b = (6\2)*8*b* **b**b*b;
-        EndBody.

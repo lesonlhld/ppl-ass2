@@ -1,2 +1,0 @@
-Var: someid[0][1][123][999], mor3Id[1000] = "SomeSTRING",
-some_more_id[987],muchmoreID = 123.321e-2,  lots_m0rE_1D[123][123] = {12,3};

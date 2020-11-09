@@ -1,4 +1,0 @@
-Function: precedence 
-        Body: 
-            x = -(-15.e-1+(-.45.1*.2.3)*(35+108+a[4]));
-        EndBody.
