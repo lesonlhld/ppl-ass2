@@ -1,0 +1,7 @@
+Function: foo
+    Parameter: abc;
+    Body:
+    Var **COMMENT**: ****id = 465632
+        **dsfhfsdhjnc^#%#@@~!**
+    vAr: sss;
+    EndBody.

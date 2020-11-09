@@ -1,1 +1,0 @@
-Program([FuncDecl(Id(misspareninop)[],([][Assign(Id(x),BinaryOp(>=.,Id(a),BinaryOp(||,FloatLiteral(2.3e-13),BinaryOp(=/=,Id(x),FloatLiteral(2e-35)))))]))])

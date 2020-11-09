@@ -1,0 +1,11 @@
+ 
+        Function: **comment chut da**funcinfunc 
+        Body: 
+            x=20;
+            Function: foo 
+            Parameter: n
+            Body: 
+                x=100.0;
+            EndBody.
+        EndBody.
+        

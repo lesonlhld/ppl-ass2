@@ -1,0 +1,5 @@
+Function: initvalueparam 
+        Parameter: n = 20, arr[5]
+        Body: 
+            Var: r = 10., v;
+        EndBody.

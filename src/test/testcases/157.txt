@@ -1,0 +1,1 @@
+If a == true then Return 1. elseIf a = False Returnn 0

@@ -1,0 +1,8 @@
+
+        Function: forinitfail 
+        Parameter: n[5]
+        Body: 
+            For (n[i] = 0, i < 10, 1) Do
+                n[i]=n+i;
+            EndFor.
+        EndBody.

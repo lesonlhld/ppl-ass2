@@ -1,0 +1,7 @@
+
+        Function: formissing
+        Body: 
+            For (, i < k, i=i*i) Do
+            goo();
+            EndFor.
+        EndBody.

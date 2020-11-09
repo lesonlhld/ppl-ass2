@@ -1,1 +1,0 @@
-Program([FuncDecl(Id(hellomoinguoi)[VarDecl(Id(n))],([][If(BinaryOp(<=.,Id(n),FloatLiteral(0.00012)),[],[Assign(Id(n),BinaryOp(*.,Id(n),FloatLiteral(3.3)))])ElseIf(BinaryOp(>.,Id(n),FloatLiteral(100.2)),[],[Assign(Id(n),BinaryOp(\.,Id(n),IntLiteral(5)))])]))])

@@ -1,0 +1,5 @@
+ Function: lan2
+        Parameter: var
+        Body: 
+        EndBody.
+        

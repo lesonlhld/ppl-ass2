@@ -1,0 +1,5 @@
+Function: idinarray 
+        Parameter: n
+        Body: 
+            x[123]={y65,de3DEF,ca_rFE245_2E23};
+        EndBody.

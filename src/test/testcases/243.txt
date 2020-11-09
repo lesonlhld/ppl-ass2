@@ -1,0 +1,4 @@
+Function: indexerror
+        Body: 
+            x=[a+6];
+        EndBody.

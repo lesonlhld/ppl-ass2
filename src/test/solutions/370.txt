@@ -1,1 +1,0 @@
-Program([FuncDecl(Id(testreturn)[VarDecl(Id(n))],([VarDecl(Id(t),BooleanLiteral(false))][If(BinaryOp(<,Id(n),IntLiteral(100)),[],[Assign(Id(t),BooleanLiteral(true))]),Return(Id(t))]))])

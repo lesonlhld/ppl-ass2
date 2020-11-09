@@ -1,1 +1,0 @@
-Program([FuncDecl(Id(lan2)[VarDecl(Id(var))],([][]))])

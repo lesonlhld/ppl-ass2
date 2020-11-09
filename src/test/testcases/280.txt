@@ -1,0 +1,3 @@
+Var: returnwithoutfunction;
+        Var: t=0;
+        Return t;

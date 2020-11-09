@@ -1,0 +1,14 @@
+Function: foo 
+        Parameter: n
+        Body: 
+            If n == 0 Then
+                If n!=0 Then
+                    c =a && b;
+                Else 
+                    Do
+                        x= x+1;
+                        iF x==5 tHEN Break;
+                    While x>1 
+                    EndDo.
+            EndIf.
+        EndBody.

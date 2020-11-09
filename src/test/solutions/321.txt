@@ -1,1 +1,0 @@
-Program([FuncDecl(Id(iDenTIfier_SS__)[VarDecl(Id(varrr))],([][]))])

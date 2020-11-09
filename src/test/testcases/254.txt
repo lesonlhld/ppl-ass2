@@ -1,0 +1,6 @@
+Function: nothen
+        Body:
+            If e==True Then
+                print("Hello cac cau\n");
+            EndIf.
+        EndBody.
