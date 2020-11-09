@@ -1,1 +1,1 @@
-Program([VarDecl(Id(x)),VarDecl(Id(x),IntLiteral(12))])
+Program([VarDecl(Id("x"),[],None),VarDecl(Id("x"),[],IntLiteral(12))])

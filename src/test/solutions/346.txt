@@ -1,1 +1,1 @@
-Program([FuncDecl(Id(nothen)[],([][If(BinaryOp(==,Id(e),BooleanLiteral(true)),[],[CallStmt(Id(print),[StringLiteral(Hello cac cau\n)])])]))])
+Program([FuncDecl(Id("nothen"),[],([],[If([(BinaryOp("==",Id("e"),BooleanLiteral(True)),[],[CallStmt(Id("print"),[StringLiteral("Hello cac cau\\n")])])],())]))])

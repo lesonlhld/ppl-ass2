@@ -1,1 +1,1 @@
-Program([VarDecl(Id(b),BooleanLiteral(true)),VarDecl(Id(c),BooleanLiteral(false))])
+Program([VarDecl(Id("b"),[],BooleanLiteral(True)),VarDecl(Id("c"),[],BooleanLiteral(False))])

@@ -208,7 +208,7 @@ class If(Stmt):
     elseStmt:Tuple[List[VarDecl],List[Stmt]] # for Else branch, empty list if no Else
 
     def __str__(self):
-        ifstmt = printlist(self.ifthenStmt,printIfThenStmt,"If([(",")],(",")]")
+        ifstmt = printlist(self.ifthenStmt,printIfThenStmt,"If([(","),(",")]")
         elsestmt = (",("+printListStmt(self.elseStmt)+"))") if self.elseStmt else ",())"
         return ifstmt + elsestmt
 

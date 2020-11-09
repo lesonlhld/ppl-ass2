@@ -1,1 +1,1 @@
-Program([FuncDecl(Id(breakandcontinuealone)[],([][Continue(),Break()]))])
+Program([FuncDecl(Id("breakandcontinuealone"),[],([],[Continue(),Break()]))])

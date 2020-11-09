@@ -1,1 +1,1 @@
-Program([FuncDecl(Id(keyword)[],([][Dowhile([],[Assign(Id(oo),IntLiteral(1))],BooleanLiteral(true))]))])
+Program([FuncDecl(Id("keyword"),[],([],[Dowhile(([],[Assign(Id("oo"),IntLiteral(1))]),BooleanLiteral(True))]))])

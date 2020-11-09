@@ -1,1 +1,1 @@
-Program([FuncDecl(Id(returnstring)[],([][Return(StringLiteral(String))]))])
+Program([FuncDecl(Id("returnstring"),[],([],[Return(StringLiteral("String"))]))])
