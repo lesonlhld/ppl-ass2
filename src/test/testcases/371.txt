@@ -1,6 +1,6 @@
-Function: arrayinarray 
-                Parameter: x[2][4]
-        Body:
-            Var: i = 0;
-            x[2][4]={{867,445,987},{76,12,744}};
+Function: returnnull 
+        Parameter: i
+        Body: 
+            If i==0 Then Return;
+            EndIf.
         EndBody.

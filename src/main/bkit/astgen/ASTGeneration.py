@@ -59,7 +59,7 @@ class ASTGeneration(BKITVisitor):
         elif ctx.integer():
             return IntLiteral(ctx.integer().accept(self))
         elif ctx.FLOAT():
-            return FloatLiteral(ctx.FLOAT())
+            return FloatLiteral(float(ctx.FLOAT().getText()))
         elif ctx.boolean_literal():
             return BooleanLiteral(ctx.boolean_literal().accept(self))
         elif ctx.STRING():

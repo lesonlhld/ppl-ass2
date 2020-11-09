@@ -1,9 +1,10 @@
-
-            Function: returnboolean
-            Body:
-            If str == "Chung Xon" Then
-                Return True;
-            Else
-                Return False;
-                EndIf.
-            EndBody.
+Function: whileindowhile
+        Parameter: x
+        Body:
+            Do
+                While a<100 Do
+                    a=a-30;
+                EndWhile.
+            While (a>1)
+            EndDo.
+        EndBody.

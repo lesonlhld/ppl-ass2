@@ -146,7 +146,7 @@ class FloatLiteral(Literal):
     value:float
 
     def __str__(self):
-        return "FloatLiteral(\"" + str(self.value) + "\")"
+        return "FloatLiteral(" + str(self.value) + ")"
 
     def accept(self, v, param):
         return v.visitFloatLiteral(self, param)
@@ -208,7 +208,7 @@ class If(Stmt):
     elseStmt:Tuple[List[VarDecl],List[Stmt]] # for Else branch, empty list if no Else
 
     def __str__(self):
-        ifstmt = printlist(self.ifthenStmt,printIfThenStmt,"If([(","),(",")]")
+        ifstmt = printlist(self.ifthenStmt,printIfThenStmt,"If([(",")],(",")]")
         elsestmt = (",("+printListStmt(self.elseStmt)+"))") if self.elseStmt else ",())"
         return ifstmt + elsestmt
 

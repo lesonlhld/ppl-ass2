@@ -1,8 +1,5 @@
-Function: breaktest 
-        Parameter: x
+Function: test_precedence___ 
+        Parameter: n
         Body: 
-            While x >= 1 Do
-                If y<100 Then Break;
-                EndIf.
-            EndWhile.
+            x = !(!(!a && b) || (c >. 3.e+3) &&!(d < 2));
         EndBody.

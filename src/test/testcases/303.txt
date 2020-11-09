@@ -1,4 +1,4 @@
-Function: callmore
-        Body: 
-            call(var*a,876,.65e-1,arr[4],True,"chuoi~~\n");
-        EndBody.
+ 
+        Var: decimal[108], hexadecimal[0X5456A][0x205F], octdecimal[0o413215][0O123];
+        Var: array[5][13456];
+        

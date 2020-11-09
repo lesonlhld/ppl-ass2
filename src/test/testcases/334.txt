@@ -1,12 +1,5 @@
-Function: octalToDecimal
-        Parameter: octalNumber
-        Body:
-        Var: decimalNumber = 0, i = 0, rem;
-        While (octalNumber != 0) Do
-            rem = octalNumber % 10;
-            octalNumber =octalNumber \ 10;
-            decimalNumber =decimalNumber  + rem * pow(8,i);
-            i=i+1;
-        EndWhile.
-    Return decimalNumber;
-    EndBody.
+Function: indexop
+        Parameter: n
+        Body: 
+            a[a[3 + foo(2)][b||True]][b[b[1+0x369]]] = a[b[2][b[12E-9]*3]] + 4;
+        EndBody.

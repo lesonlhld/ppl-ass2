@@ -1,2 +1,4 @@
-
-        Var: stringinarray, x[124]={"STRING","aRraY1","Array2"};
+Function: callmore
+        Body: 
+            call(a,876,var*.65e-1,arr[3],True,"chuoi~~\n");
+        EndBody.

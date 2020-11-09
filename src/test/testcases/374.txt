@@ -1,0 +1,5 @@
+
+        Function: funccallfail 
+        Body:
+        foo=a+2;
+        EndBody.

@@ -1,8 +1,9 @@
-Function: ifOKE 
+Function: if__more_Else 
+        Parameter: khaibaobien
         Body: 
             If n == 0 Then
-                x = 3;
+                Return 1;
             Else
-                Break;
+                Return n * fact (n - 1);
             EndIf.
         EndBody.

@@ -1,3 +1,10 @@
-Function: complexarray
-            Body: x[124]={"duwat74\r \t", "@#&\n rwFEW54",54412,10.e14, 0.124, 544.0e-6  ,{"xe mau xanh"},"xe mau do"};
+Function: whileinwhile 
+        Parameter: x
+        Body: 
+            While (True) Do
+                While (x>=0) Do
+                    x = x+-1;
+                EndWhile.
+                If ((x<0)) Then Break; EndIf.
+            EndWhile.
         EndBody.

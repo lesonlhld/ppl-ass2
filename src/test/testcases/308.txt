@@ -1,7 +1,5 @@
-
-        Function: parameter 
-        Parameter: a, b,c[123] ,d[123][234][0]  ,e
+ Function: lan2
+        Parameter: var
         Body: 
-            a=1;
         EndBody.
         

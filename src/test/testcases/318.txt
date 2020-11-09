@@ -1,10 +1,7 @@
-
-        Function: test
-        Body:
-            Var: x=1;
-            If x > 10 Then
-                x=25+6-.2.5%3\100*x;
-            Else
-                x=x+2;
-            EndIf.
-        EndBody.
+**Function: main 
+        Parameter: x, a
+        Body: 
+            While x>1 Do
+                Var: a = 10;
+            EndWhile.
+        EndBody.**

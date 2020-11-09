@@ -1,5 +1,5 @@
-Function: keyword 
+Function: initvalueparam 
+        Parameter: n, arr[5]
         Body: 
-            Dooo=1; While True
-            EndDo.
+            Var: r = 10., v;
         EndBody.

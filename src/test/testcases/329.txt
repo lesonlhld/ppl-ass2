@@ -1,8 +1,5 @@
-Function: testreturn 
+Function: stmtcallinindex 
         Parameter: n
         Body: 
-            Var: t=False;
-            If n<100 Then t=True;
-            EndIf.
-            Return t;
+            a = 3*.4.5\0e-2+arr[3-function("call")];
         EndBody.

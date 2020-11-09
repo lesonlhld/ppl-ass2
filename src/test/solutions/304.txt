@@ -1,1 +1,1 @@
-Program([VarDecl(Id(decimal),[108]),VarDecl(Id(hexadecimal),[345450,8287]),VarDecl(Id(octdecimal),[136845,83]),VarDecl(Id(array),[5,13456])])
+Program([VarDecl(Id(dsa),[432,868,15313]),VarDecl(Id(b),FloatLiteral(2000000.0)),VarDecl(Id(c),StringLiteral(mot con vit xoe ra 2 \n cai canh))])

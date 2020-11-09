@@ -1,6 +1,5 @@
-Function: array 
-        Parameter: i , j, arr[1001]
+Function: breakandcontinuealone
         Body: 
-            a[i] = arr[c[2+j][b[i]*4]] + 4;
-            i = i + 1;
+            Continue;
+            Break;
         EndBody.

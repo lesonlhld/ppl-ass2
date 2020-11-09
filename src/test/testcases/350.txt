@@ -1,2 +1,7 @@
-Var:x;
-        Var: x=12;
+
+        Function: fornotendfor
+        Body: 
+            For (i = 1, i <= x*x,i*i+.1.5)
+            Do x=x+1;
+            EndFor.
+        EndBody.

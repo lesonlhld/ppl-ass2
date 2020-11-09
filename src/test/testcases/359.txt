@@ -1,4 +1,8 @@
-Function: arr
-        Body: 
-            arr[1][2][3] = 4;
+Function: miss_one_do 
+        Body:
+            While a<100 Do Do
+                a=a-30;
+                While (a>1)
+                EndDo.
+            EndWhile.
         EndBody.

@@ -1,6 +1,10 @@
- Function: foo
-                        Parameter: a
-                        Body:
-                        Var: x = 2;
-                        EndBody.
-                
+
+        Function: test
+        Body:
+            Var: x=1;
+            If x > 10 Then
+                x=25+6-.2.5%3\100*x;
+            Else
+                x=x+2;
+            EndIf.
+        EndBody.

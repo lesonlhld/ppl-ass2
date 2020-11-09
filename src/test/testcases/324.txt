@@ -1,10 +1,10 @@
-Function: whileinwhile 
-        Parameter: x
+Function: hellomoinguoi 
+        Parameter: n
         Body: 
-            While (True) Do
-                While (x>=0) Do
-                    x = x+-1;
-                EndWhile.
-                If ((x<0)) Then Break; EndIf.
-            EndWhile.
+            If n <=. 1.2E-4 Then
+            n=n*.3.3;
+            ElseIf n>.100.2 Then
+            n=n\.5;
+            EndIf.
         EndBody.
+        

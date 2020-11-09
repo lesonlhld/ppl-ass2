@@ -1,10 +1,6 @@
-Function: whileindowhile
-        Parameter: x
-        Body:
-            Do
-                While a<100 Do
-                    a=a-30;
-                EndWhile.
-            While (a>1)
-            EndDo.
+Function: calculate 
+        Parameter: n
+        Body: 
+            Var: a = {1,2,3}, b[2][3] = 5, c[2] = {{1,3},{3,5,7}};
+            a[3+foo(3)] = a[b[2][3]] + 4;
         EndBody.

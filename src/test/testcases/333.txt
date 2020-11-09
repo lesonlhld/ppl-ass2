@@ -1,13 +1,10 @@
-Function: foo 
+Function: signop
         Parameter: n
         Body:
-            Var: i = 0;
-            While i!=423 Do
-                fact (i);
-                i = i + 3; **cmt**
-                If i==212 Then Break;
-                a = (!(b && c)||!(a&&b)); 
-                EndIf.
-            EndWhile.
+            a = -1082000;
+            b = -0X123BCD;
+            c = -0o21345;
+            d = -a;
+            c = -call(a);
+            b = -.352.4E-12 ;
         EndBody.
-        

@@ -1,6 +1,8 @@
-Function: calculate 
-        Parameter: n
+Function: breaktest 
+        Parameter: x
         Body: 
-            Var: a = {1,2,4}, b[2][4] = 5, c[2] = {{1,4},{4,5,7}};
-            a[4+foo(4)] = a[b[2][4]] + 4;
+            While x >= 1 Do
+                If y<100 Then Break;
+                EndIf.
+            EndWhile.
         EndBody.

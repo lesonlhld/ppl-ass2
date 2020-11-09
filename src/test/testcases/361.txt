@@ -1,6 +1,7 @@
-Function: arraynull
+Function: notexpr 
+        Parameter: n
         Body: 
-            a[12] = {  };
-            x[45]={{{{{}}}}};
-
+            Do  
+                Return 1;
+            While a =/= 2.2 EndDo.
         EndBody.

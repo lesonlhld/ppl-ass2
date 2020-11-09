@@ -1,1 +1,1 @@
-Program([FuncDecl(Id(testreturn)[VarDecl(Id(n))],([VarDecl(Id(t),BooleanLiteral(false))][If(BinaryOp(<,Id(n),IntLiteral(100)),[],[Assign(Id(t),BooleanLiteral(true))]),Return(Id(t))]))])
+Program([FuncDecl(Id(stmtcallinindex)[VarDecl(Id(n))],([][Assign(Id(a),BinaryOp(+,BinaryOp(\,BinaryOp(*.,IntLiteral(3),FloatLiteral(4.5)),FloatLiteral(0.0)),ArrayCell(Id(arr),[BinaryOp(-,IntLiteral(3),CallExpr(Id(function),[StringLiteral(call)]))])))]))])

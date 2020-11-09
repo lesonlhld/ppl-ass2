@@ -1,11 +1,6 @@
-Function: iflongnhau
-        Parameter: a, b
-        Body:
-        Var: id[4412][867][9856][867], stringID[108] = "day la \\ 1 chuoi !!",literal = 120000e-1,  array[2][4] = {{867,445,987},{76,12,744}};
-            If n > 10 Then
-                If n <. 20.5 Then Return x;
-                EndIf.
-                printStrLn(arg);
-            Else fact(x);
+Function: testop 
+        Body: 
+            If ((k==1)&&(i!=0))||(k==5)||!j Then
+                f=f%3;
             EndIf.
         EndBody.

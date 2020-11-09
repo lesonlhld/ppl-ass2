@@ -1,1 +1,1 @@
-Program([VarDecl(Id(stringinarray)),VarDecl(Id(x),[124],ArrayLiteral(StringLiteral(STRING),StringLiteral(aRraY1),StringLiteral(Array2)))])
+Program([FuncDecl(Id(callmore)[],([][CallStmt(Id(call),[Id(a),IntLiteral(876),BinaryOp(*.,Id(var),FloatLiteral(6.5)),ArrayCell(Id(arr),[IntLiteral(3)]),BooleanLiteral(true),StringLiteral(chuoi~~\n)])]))])

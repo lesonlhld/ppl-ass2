@@ -1,4 +1,5 @@
-Function: multicallstmt
+Var: callnotinfunction;
+        Function: a
         Body:
-            a =-((func1(a)+24) * -func2(4)+arr[4])\. 0.5;
-        EndBody.
+            goo(x,y*2,z+3.00000003);
+            EndBody.

@@ -1,7 +1,9 @@
-
-        Function: foroke
+Function: iDenTIfier_SS__ 
+        Parameter: varrr
         Body: 
-            For (i = 0, i < 10, 2) Do
-                writeln(i);
-            EndFor.
+            **Do
+                x= x+1;
+            While x>1 
+            EndDo.
+            **
         EndBody.

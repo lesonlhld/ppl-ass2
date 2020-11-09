@@ -1,4 +1,4 @@
-Function: arrayhavespace
+Function: precedence 
         Body: 
-            Var  : x[123]={   20, 2   ,108  };
+            x = -(-15.e-1+(-.45.1*.2.3)*(35+108+a[4]));
         EndBody.

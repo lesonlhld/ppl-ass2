@@ -1,6 +1,4 @@
-Function: testop 
-        Body: 
-            If ((k==1)&&(i!=0))||(k==5)||!j Then
-                f=f%3;
-            EndIf.
-        EndBody.
+**sau day la 1 ham \\ main\n**
+Function:**het y r** main ** test ne;**
+**cmt tum lum ~!$()>?:{}**    Body: a=**235**865;
+    EndBody **Body**.

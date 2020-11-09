@@ -1,8 +1,6 @@
-Function: fullIf 
-        Body: 
-            If (x == (b!=c && (a > b + c))) Then Return;
-            ElseIf (x=="Chung Xon@@") Then Break;
-            Else 
-            x="successful";
-            EndIf.
+Function: callstmt 
+        Parameter: x,y
+        Body:
+            foo(2 + x, 4. \. y);
+            goo();
         EndBody.

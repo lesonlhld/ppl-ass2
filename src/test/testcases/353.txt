@@ -1,5 +1,11 @@
-Function: foo 
-        Parameter: n 
-        Body: 
-            Var: x[12]={12};
+Function: whileandif 
+        Body:
+            Var: x=20;
+            While True Do
+                If x==0 Then Break;
+                ElseIf x%2==0 Then
+                    x=x\2;
+                Else writeln(x);
+                EndIf.
+            EndWhile.
         EndBody.

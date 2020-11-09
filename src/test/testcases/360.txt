@@ -1,4 +1,7 @@
-Function: callmore
+Function: testdowhile
+        Parameter: x,a,b
         Body: 
-            call(a);
+            Do x = a + b;
+            While(x<1000.e5)
+            EndDo.
         EndBody.

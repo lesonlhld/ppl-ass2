@@ -1,1 +1,10 @@
-Var: arr[2] = {1,2};
+Function: ifELSEelseif
+        Body: 
+            If i <. 4.5 Then
+                print(i);
+            ElseIf n > 10 Then 
+                Break;
+            Else
+                i=i-1;
+            EndIf.
+            EndBody.

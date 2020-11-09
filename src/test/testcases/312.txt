@@ -1,5 +1,7 @@
-Function: multivscmt 
+
+        Function: parameter 
+        Parameter: a, b,c[123] ,d[123][234][0]  ,e
         Body: 
-            Var: a = 100, b;
-            b = (6\2)*8*b* **b**b*b;
+            a=1;
         EndBody.
+        

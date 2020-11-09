@@ -1,7 +1,8 @@
-Function: iFElseIFNotElse 
-        Parameter: n
+Function: continue 
         Body: 
-            If bool_of_string("True") Then
-                a = int_of_string (read ());
-            EndIf.
+            For (i=0, i!=9, i) Do
+                If i==10 Then Continue;
+                EndIf.
+                foo();
+            EndFor.
         EndBody.

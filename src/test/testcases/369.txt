@@ -1,6 +1,4 @@
-Function: array
-        Parameter: x[124]
-        Body:
-            Var: i = 0;
-            x[124]={996,712,216};
+Function: callwithoutsemi
+        Body: 
+            iden__TI_FIerOf_Function(a,b_,c+.3.e-2);
         EndBody.

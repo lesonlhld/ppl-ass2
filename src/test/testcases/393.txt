@@ -1,0 +1,6 @@
+Function: ifOKE 
+        Body: 
+            If n == 0 Then
+                Break;
+            EndIf.
+        EndBody.

@@ -1,2 +1,7 @@
-Function: a Parameter: a Body: Var: a=False;EndBody. Function: b Body: EndBody.
-Function: d**Here some too**Parameter: d Body: EndBody.
+Function: positionoflogicalop 
+        Parameter: n
+        Body: 
+            While (True) Do
+                logic=a&&var||!variable;
+            EndWhile.
+        EndBody.

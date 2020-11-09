@@ -1,1 +1,1 @@
-Program([FuncDecl(Id(multivscmt)[],([VarDecl(Id(a),IntLiteral(100)),VarDecl(Id(b))][Assign(Id(b),BinaryOp(*,BinaryOp(*,BinaryOp(*,BinaryOp(*,BinaryOp(\,IntLiteral(6),IntLiteral(2)),IntLiteral(8)),Id(b)),Id(b)),Id(b)))]))])
+Program([FuncDecl(Id(parameter)[VarDecl(Id(a)),VarDecl(Id(b)),VarDecl(Id(c),[123]),VarDecl(Id(d),[123,234,0]),VarDecl(Id(e))],([][Assign(Id(a),IntLiteral(1))]))])

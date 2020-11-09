@@ -1,10 +1,9 @@
-Function: hellomoinguoi 
-        Parameter: n
-        Body: 
-            If n <=. 1.2E-4 Then
-            n=n*.3.3;
-            ElseIf n>.100.2 Then
-            n=n\.5;
-            EndIf.
+Function: varinstmtlist
+        Body:
+            Var: i = 0;
+            Do
+                Var: k = 10;
+                i = i + 1;
+            While i <= 10 
+            EndDo.
         EndBody.
-        

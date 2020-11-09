@@ -1,1 +1,1 @@
-Program([FuncDecl(Id(a)[VarDecl(Id(a))],([VarDecl(Id(a),BooleanLiteral(false))][])),FuncDecl(Id(b)[],([][])),FuncDecl(Id(d)[VarDecl(Id(d))],([][]))])
+Program([FuncDecl(Id(positionoflogicalop)[VarDecl(Id(n))],([][While(BooleanLiteral(true),[],[Assign(Id(logic),BinaryOp(||,BinaryOp(&&,Id(a),Id(var)),UnaryOp(!,Id(variable))))])]))])

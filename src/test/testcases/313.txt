@@ -1,9 +1,13 @@
-Function: iDenTIfier_SS__ 
-        Parameter: varrr
+Function: testn
+
+
+        Parameter: themdauchamphay
         Body: 
-            **Do
-                x= x+1;
-            While x>1 
-            EndDo.
-            **
+            If n == 0 Then
+                Return 1;
+            ElseIf (n>0) Then
+                Return n * fact (n - 1);
+            Else
+                Return n;
+            EndIf.
         EndBody.
