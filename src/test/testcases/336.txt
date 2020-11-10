@@ -1,0 +1,4 @@
+Function: misspareninop 
+        Body: 
+             x = (a >=. 2.3e-13 || (x =/= 2e-35));
+        EndBody.

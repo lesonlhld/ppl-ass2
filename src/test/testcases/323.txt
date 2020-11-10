@@ -1,0 +1,1 @@
+Function:main Parameter:x Body:If!a Thenb=2; ElseWhile(x>0)DoBreak;EndWhile.EndIf.EndBody.

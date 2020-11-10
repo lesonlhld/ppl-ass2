@@ -1,0 +1,8 @@
+Function: continue 
+        Body: 
+            For (i=0, i!=9, i) Do
+                If i==10 Then Continue;
+                EndIf.
+                foo();
+            EndFor.
+        EndBody.

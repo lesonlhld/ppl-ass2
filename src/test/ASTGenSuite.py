@@ -1120,7 +1120,7 @@ Function: d**Here some too**Parameter: d Body: EndBody."""
                 check = False;
             EndIf.
         EndBody.""" 
-        expect = Program([FuncDecl(Id("ifOKE"),[],([],[If([(BinaryOp("==",Id("n"),IntLiteral(0)),[],[Assign(Id("x"),IntLiteral(3))]),ElseIf(BinaryOp("!=",Id("x"),IntLiteral(2)),[],[Assign(Id("check"),BooleanLiteral(False))])],())]))])
+        expect = Program([FuncDecl(Id("ifOKE"),[],([],[If([(BinaryOp("==",Id("n"),IntLiteral(0)),[],[Assign(Id("x"),IntLiteral(3))]),(BinaryOp("!=",Id("x"),IntLiteral(2)),[],[Assign(Id("check"),BooleanLiteral(False))])],())]))])
         self.assertTrue(TestAST.checkASTGen(input,expect,394))
         
     def test_395(self):
@@ -1220,4 +1220,22 @@ Function: d**Here some too**Parameter: d Body: EndBody."""
         input = r"""Var: b = True, c = False;""" 
         expect = Program([VarDecl(Id("b"),[],BooleanLiteral(True)),VarDecl(Id("c"),[],BooleanLiteral(False))])
         self.assertTrue(TestAST.checkASTGen(input,expect,408))
-        
+    
+    def test_409(self):
+        input = """Var: a[2] = {True,{2,3}}, str = "string";
+        Function: func
+        Body:
+            If (a + 5) && (j-6) || (k*7) Then
+               
+                a[i] = b +. 1.0;
+                b = i - b * a -. b \\ c - -.d;
+            EndIf.
+            Return a+func(123);
+        EndBody.
+        Function: main
+        Body:
+            func();
+            Return 0;
+        EndBody."""
+        expect = Program([VarDecl(Id("a"),[2],ArrayLiteral([BooleanLiteral(True),ArrayLiteral([IntLiteral(2),IntLiteral(3)])])),VarDecl(Id("str"),[],StringLiteral("string")),FuncDecl(Id("func"),[],([],[If([(BinaryOp("||",BinaryOp("&&",BinaryOp("+",Id("a"),IntLiteral(5)),BinaryOp("-",Id("j"),IntLiteral(6))),BinaryOp("*",Id("k"),IntLiteral(7))),[],[Assign(ArrayCell(Id("a"),[Id("i")]),BinaryOp("+.",Id("b"),FloatLiteral(1.0))),Assign(Id("b"),BinaryOp("-",BinaryOp("-.",BinaryOp("-",Id("i"),BinaryOp("*",Id("b"),Id("a"))),BinaryOp("\\",Id("b"),Id("c"))),UnaryOp("-.",Id("d"))))])],()),Return(BinaryOp("+",Id("a"),CallExpr(Id("func"),[IntLiteral(123)])))])),FuncDecl(Id("main"),[],([],[CallStmt(Id("func"),[]),Return(IntLiteral(0))]))])
+        self.assertTrue(TestAST.checkASTGen(input,expect,409))

@@ -1,0 +1,1 @@
+Program([FuncDecl(Id("positionoflogicalop"),[VarDecl(Id("n"),[],None)],([],[While(BooleanLiteral(True),([],[Assign(Id("logic"),BinaryOp("||",BinaryOp("&&",Id("a"),Id("var")),UnaryOp("!",Id("variable"))))]))]))])

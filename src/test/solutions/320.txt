@@ -1,0 +1,1 @@
+Program([VarDecl(Id("fu"),[],ArrayLiteral([IntLiteral(476069),IntLiteral(11603),IntLiteral(321)]))])

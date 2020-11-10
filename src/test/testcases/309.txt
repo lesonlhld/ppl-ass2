@@ -1,0 +1,7 @@
+ 
+        Function: **comment chut da**funcinfunc 
+        Body: 
+            x=20;
+                x=100.0;
+        EndBody.
+        
