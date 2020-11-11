@@ -1,9 +1,0 @@
-Chỗ elementExp cái expr_index return Id hoặc function; indexOp thì return list
-2 cái + lại đc ko vậy ?
-
-Xem test 335 t sửa coi thử
-Function có indexOp đc ko
-
-Tân
-
-T out nhe, lag quá

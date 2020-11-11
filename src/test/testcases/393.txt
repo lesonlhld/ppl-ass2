@@ -1,8 +1,4 @@
-Var: a = 5;
-
-        Function: main
-        Parameter: a,b[2]
-        Body:
-            foo (2 + x, 4. + y);
-            goo ();
+Function: index
+        Body: 
+            arr(a + bbb[61.2 *. (x + y)])[2] = b[2][3];
         EndBody.

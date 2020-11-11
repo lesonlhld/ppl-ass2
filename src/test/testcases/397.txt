@@ -1,1 +1,6 @@
-Var: x =5.2e-4 ;
+Function: printchar 
+        Body:
+            For (a = 1, a <= len(str),1 ) Do
+                writeln(str[a]);
+            EndFor.
+        EndBody.

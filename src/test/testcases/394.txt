@@ -1,4 +1,10 @@
-Function: index
-        Body: 
-            func(a + b[6 * (x + y)])[i][j] = arr[a+6]
-        EndBody.
+
+            Function: print
+            Parameter: n,x
+            Body:
+                Var: i;
+                For (i = 0, i < sqrt(n), 2) Do
+                    x = i + n;
+                    print(x\2);
+                EndFor.
+            EndBody.
