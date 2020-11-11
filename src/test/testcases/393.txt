@@ -1,6 +1,8 @@
-Function: ifOKE 
-        Body: 
-            If n == 0 Then
-                Break;
-            EndIf.
+Var: a = 5;
+
+        Function: main
+        Parameter: a,b[2]
+        Body:
+            foo (2 + x, 4. + y);
+            goo ();
         EndBody.

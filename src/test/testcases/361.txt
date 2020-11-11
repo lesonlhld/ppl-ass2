@@ -1,7 +1,8 @@
-Function: notexpr 
-        Parameter: n
+Function: continue 
         Body: 
-            Do  
-                Return 1;
-            While a =/= 2.2 EndDo.
+            For (i=0, i!=9, i) Do
+                If i==10 Then Continue;
+                EndIf.
+                foo();
+            EndFor.
         EndBody.

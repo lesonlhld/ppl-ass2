@@ -1,8 +1,8 @@
-Function: miss_one_do 
-        Body:
-            While a<100 Do Do
-                a=a-30;
-                While (a>1)
-                EndDo.
+Function: breaktest 
+        Parameter: x
+        Body: 
+            While x >= 1 Do
+                If y<100 Then Break;
+                EndIf.
             EndWhile.
         EndBody.

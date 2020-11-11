@@ -1,6 +1,4 @@
-Function: callstmt 
-        Parameter: x,y
-        Body:
-            foo(2 + x, 4. \. y);
-            goo();
+Function: callwithoutsemi
+        Body: 
+            iden__TI_FIerOf_Function(a,b_,c+.3.e-2);
         EndBody.

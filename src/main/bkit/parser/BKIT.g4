@@ -191,7 +191,9 @@ stmt: assign_stmt | if_stmt | for_stmt | while_stmt | do_while_stmt | break_stmt
 
 stmt_list: var_list? stmt*;
 
-assign_stmt: ID index_operators? ASSIGN exp SEMI;
+// assign_stmt: ID index_operators? ASSIGN exp SEMI;
+
+assign_stmt: exp6 ASSIGN exp SEMI;
 
 if_stmt: IF exp THEN stmt_list else_if? (ELSE stmt_list)? ENDIF DOT;
 
@@ -235,7 +237,9 @@ exp7: function_call | LEFT_PAREN exp RIGHT_PAREN | operands;
 
 exp_list: exp COMMA exp_list | exp;
 
-operands: ID | literal | element_exp;
+// operands: ID | literal | element_exp;
+
+operands: ID | literal;
 
 // Operators
 multiplying_operators: MULTI | MULTI_F | DIV | DIV_F | MOD;

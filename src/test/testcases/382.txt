@@ -1,4 +1,9 @@
-Function: callincall
-        Body:
-            a =func1(foo(3))+23 - func2(goo(foo(a)));
+Function: mmmmm
+        Body: 
+            Do
+                While(1) Do
+                foo (2 + x, 4. \. y);goo ();
+            EndWhile.
+            While(1)
+            EndDo.
         EndBody.

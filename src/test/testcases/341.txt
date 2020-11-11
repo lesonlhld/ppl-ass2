@@ -1,9 +1,11 @@
-Function: if__more_Else 
-        Parameter: khaibaobien
+Function: iFmoreElseIf
+        Parameter: n
         Body: 
-            If n == 0 Then
-                Return 1;
-            Else
-                Return n * fact (n - 1);
+            If bool_of_string("True") Then
+                a = int_of_string (read ());
+            ElseIf n =/= 1.08 Then
+                b = float_of_int (a) +. 2.0;
+            ElseIf False Then
+                Return n;
             EndIf.
         EndBody.

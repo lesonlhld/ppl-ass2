@@ -1,4 +1,8 @@
-Function: callmore
+Function: testreturn 
+        Parameter: n
         Body: 
-            call(a,876,var*.65e-1,arr[3],True,"chuoi~~\n");
+            Var: t=False;
+            If n<100 Then t=True;
+            EndIf.
+            Return t;
         EndBody.

@@ -1,4 +1,4 @@
- Function: lan2
+ Function: emptybody
         Parameter: var
         Body: 
         EndBody.

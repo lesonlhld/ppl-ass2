@@ -1,11 +1,11 @@
-
-        Function: forinfor
-        Parameter: row,col,sum,arr[5][9]
+Function: whileandif 
         Body:
-            Var: sum=0;
-            For( i=0,i<=row,1) Do
-                For(j=0,j<col,2) Do
-                    sum=sum+arr[i][j];
-                EndFor.
-            EndFor.
+            Var: x=20;
+            While True Do
+                If x==0 Then Break;
+                ElseIf x%2==0 Then
+                    x=x\2;
+                Else writeln(x);
+                EndIf.
+            EndWhile.
         EndBody.

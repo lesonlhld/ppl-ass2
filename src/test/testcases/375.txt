@@ -1,6 +1,4 @@
-Function: array
-        Parameter: x[123]
-        Body:
-            Var: i = 0;
-            x[123]={996,712,216};
+Function: arrayhavespace
+        Body: 
+            Var  : x[123]={   20, 2   ,108  };
         EndBody.

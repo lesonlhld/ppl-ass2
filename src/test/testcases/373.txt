@@ -1,9 +1,6 @@
-
-            Function: returnboolean
-            Body:
-            If str == "Chung Xon" Then
-                Return True;
-            Else
-                Return False;
-                EndIf.
-            EndBody.
+Function: arrayinarray 
+                Parameter: x[2][3]
+        Body:
+            Var: i = 0;
+            x[2][3]={{867,345,987},{76,12,744}};
+        EndBody.

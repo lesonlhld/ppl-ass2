@@ -1,12 +1,6 @@
-Function: factorialOfNumber
-        Parameter: n
-        Body:
-        Var:factorial=1;
-        print("Enter integer: ");
-        read();
-        For (i=0, i<=n, 1) Do
-            factorial=factorial*i;
-        EndFor.
-        print(factorial);
-        Return factorial;
-        EndBody.
+ Function: foo
+                        Parameter: a
+                        Body:
+                        Var: x = 2;
+                        EndBody.
+                

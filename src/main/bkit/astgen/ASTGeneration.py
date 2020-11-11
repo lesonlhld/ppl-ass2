@@ -153,9 +153,13 @@ class ASTGeneration(BKITVisitor):
         for i in range(len(ctx.stmt())):
             stmtList += [ctx.stmt(i).accept(self)]
         return (varList, stmtList)
-    # assign_stmt: ID index_operators? ASSIGN exp SEMI;
+    # # assign_stmt: ID index_operators? ASSIGN exp SEMI;
+    # def visitAssign_stmt(self, ctx:BKITParser.Assign_stmtContext):
+    #     return Assign(ArrayCell(Id(ctx.ID().getText()),ctx.index_operators().accept(self)),ctx.exp().accept(self)) if ctx.index_operators() else Assign(Id(ctx.ID().getText()),ctx.exp().accept(self))
+
+    # assign_stmt: exp6 ASSIGN exp SEMI;
     def visitAssign_stmt(self, ctx:BKITParser.Assign_stmtContext):
-        return Assign(ArrayCell(Id(ctx.ID().getText()),ctx.index_operators().accept(self)),ctx.exp().accept(self)) if ctx.index_operators() else Assign(Id(ctx.ID().getText()),ctx.exp().accept(self))
+        return Assign(ctx.exp6().accept(self),ctx.exp().accept(self))
 
     # if_stmt: IF exp THEN stmt_list else_if? (ELSE stmt_list)? ENDIF DOT;
     def visitIf_stmt(self, ctx:BKITParser.If_stmtContext):
@@ -266,9 +270,18 @@ class ASTGeneration(BKITVisitor):
     def visitExp_list(self, ctx:BKITParser.Exp_listContext):
         return [ctx.exp().accept(self)] + ctx.exp_list().accept(self) if ctx.exp_list() else [ctx.exp().accept(self)]
 
-    # operands: ID | literal | element_exp;
+    # # operands: ID | literal | element_exp;
+    # def visitOperands(self, ctx:BKITParser.OperandsContext):
+    #     if ctx.ID():
+    #         return Id(ctx.ID().getText())
+    #     elif ctx.literal():
+    #         return ctx.literal().accept(self)
+    #     else:
+    #         return ctx.element_exp().accept(self)
+
+    # operands: ID | literal;
     def visitOperands(self, ctx:BKITParser.OperandsContext):
-        return Id(ctx.ID().getText()) if ctx.ID() else ctx.literal().accept(self) if ctx.literal() else ctx.element_exp().accept(self)
+        return Id(ctx.ID().getText()) if ctx.ID() else ctx.literal().accept(self)
 
     # multiplying_operators: MULTI | MULTI_F | DIV | DIV_F | MOD;
     def visitMultiplying_operators(self, ctx:BKITParser.Multiplying_operatorsContext):

@@ -1,1 +1,1 @@
-Program([FuncDecl(Id("indexerror"),[],([],[Assign(Id("x"),ArrayCell(Id("arr"),[BinaryOp("+",Id("a"),IntLiteral(6))]))]))])
+Program([FuncDecl(Id("index"),[],([],[Assign(Id("x"),ArrayCell(Id("arr"),[BinaryOp("+",Id("a"),IntLiteral(6))]))]))])

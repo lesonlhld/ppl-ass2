@@ -1,1 +1,1 @@
-Program([FuncDecl(Id("fullIf"),[],([],[If([(BinaryOp("==",Id("x"),BinaryOp("!=",Id("b"),BinaryOp("&&",Id("c"),BinaryOp(">",Id("a"),BinaryOp("+",Id("b"),Id("c")))))),[],[Return(None)]),(BinaryOp("==",Id("x"),StringLiteral("Chung Xon@@")),[],[Break()])],([],[Assign(Id("x"),StringLiteral("successful"))]))]))])
+Program([FuncDecl(Id("ifELSEelseif"),[],([],[If([(BinaryOp("<.",Id("i"),FloatLiteral(4.5)),[],[CallStmt(Id("print"),[Id("i")])]),(BinaryOp(">",Id("n"),IntLiteral(10)),[],[Break()])],([],[Assign(Id("i"),BinaryOp("-",Id("i"),IntLiteral(1)))]))]))])

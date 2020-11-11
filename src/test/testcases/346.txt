@@ -1,6 +1,8 @@
-Function: nothen
-        Body:
-            If e==True Then
-                print("Hello cac cau\n");
-            EndIf.
+
+        Function: forinitfail 
+        Parameter: n[5]
+        Body: 
+            For (i = 0, i < 10, 1) Do
+                n[i]=n+i;
+            EndFor.
         EndBody.

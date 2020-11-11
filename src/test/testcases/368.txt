@@ -1,5 +1,6 @@
-Var: callnotinfunction;
-        Function: a
-        Body:
-            goo(x,y*2,z+3.00000003);
-            EndBody.
+Function: returnnull 
+        Parameter: i
+        Body: 
+            If i==0 Then Return;
+            EndIf.
+        EndBody.

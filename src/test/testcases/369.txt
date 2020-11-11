@@ -1,4 +1,4 @@
-Function: callwithoutsemi
-        Body: 
-            iden__TI_FIerOf_Function(a,b_,c+.3.e-2);
-        EndBody.
+Function: returnstring
+            Body:
+                Return "String";
+            EndBody.

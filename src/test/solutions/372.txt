@@ -1,1 +1,1 @@
-Program([FuncDecl(Id("returnstring"),[],([],[Return(StringLiteral("String"))]))])
+Program([FuncDecl(Id("array"),[VarDecl(Id("x"),[123],None)],([VarDecl(Id("i"),[],IntLiteral(0))],[Assign(ArrayCell(Id("x"),[IntLiteral(123)]),ArrayLiteral([IntLiteral(996),IntLiteral(712),IntLiteral(216)]))]))])

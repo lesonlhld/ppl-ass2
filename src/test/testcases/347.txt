@@ -1,7 +1,7 @@
 
-        Function: foroke
+        Function: formissing
         Body: 
-            For (i = 0, i < 10, 2) Do
-                writeln(i);
+            For (i=12, i < k, i*i) Do
+            goo();
             EndFor.
         EndBody.

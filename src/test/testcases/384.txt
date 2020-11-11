@@ -1,13 +1,12 @@
-Function: foo 
+Function: factorialOfNumber
         Parameter: n
         Body:
-            Var: i = 0;
-            While i!=423 Do
-                fact (i);
-                i = i + 3; **cmt**
-                If i==212 Then Break;
-                a = (!(b && c)||!(a&&b)); 
-                EndIf.
-            EndWhile.
+        Var:factorial=1;
+        print("Enter integer: ");
+        read();
+        For (i=0, i<=n, 1) Do
+            factorial=factorial*i;
+        EndFor.
+        print(factorial);
+        Return factorial;
         EndBody.
-        

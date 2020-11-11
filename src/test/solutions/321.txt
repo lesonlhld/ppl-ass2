@@ -1,1 +1,1 @@
-Program([FuncDecl(Id("iDenTIfier_SS__"),[VarDecl(Id("varrr"),[],None)],([],[]))])
+Program([FuncDecl(Id("cmtinbody"),[VarDecl(Id("varrr"),[],None)],([],[]))])

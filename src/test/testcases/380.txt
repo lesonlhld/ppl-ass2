@@ -1,6 +1,2 @@
-Function: arraynull
-        Body: 
-            a[12] = {  };
-            x[45]={{{{{}}}}};
-
-        EndBody.
+Function: a Parameter: a Body: Var: a=False;EndBody. Function: b Body: EndBody.
+Function: d**Here some too**Parameter: d Body: EndBody.

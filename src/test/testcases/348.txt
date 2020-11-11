@@ -1,8 +1,7 @@
 
-        Function: forinitfail 
-        Parameter: n[5]
+        Function: fornotendfor
         Body: 
-            For (i = 0, i < 10, 1) Do
-                n[i]=n+i;
+            For (i = 1, i <= x*x,i*i+.1.5)
+            Do x=x+1;
             EndFor.
         EndBody.

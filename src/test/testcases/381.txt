@@ -1,4 +1,13 @@
-Function: multicallstmt
+Function: foo 
+        Parameter: n
         Body:
-            a =-((func1(a)+23) * -func2(4)+arr[3])\. 0.5;
+            Var: i = 0;
+            While i!=423 Do
+                fact (i);
+                i = i + 3; **cmt**
+                If i==212 Then Break;
+                a = (!(b && c)||!(a&&b)); 
+                EndIf.
+            EndWhile.
         EndBody.
+        

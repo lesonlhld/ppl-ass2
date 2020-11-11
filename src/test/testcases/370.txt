@@ -1,8 +1,9 @@
-Function: testreturn 
-        Parameter: n
-        Body: 
-            Var: t=False;
-            If n<100 Then t=True;
-            EndIf.
-            Return t;
-        EndBody.
+
+            Function: returnboolean
+            Body:
+            If str == "Chung Xon" Then
+                Return True;
+            Else
+                Return False;
+                EndIf.
+            EndBody.

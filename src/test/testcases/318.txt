@@ -1,4 +1,4 @@
-**Function: main 
+**Function: while 
         Parameter: x, a
         Body: 
             While x>1 Do

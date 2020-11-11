@@ -1,8 +1,10 @@
-Function: fullIf 
+Function: ifELSEelseif
         Body: 
-            If (x == (b!=c && (a > b + c))) Then Return;
-            ElseIf (x=="Chung Xon@@") Then Break;
-            Else 
-            x="successful";
+            If i <. 4.5 Then
+                print(i);
+            ElseIf n > 10 Then 
+                Break;
+            Else
+                i=i-1;
             EndIf.
-        EndBody.
+            EndBody.

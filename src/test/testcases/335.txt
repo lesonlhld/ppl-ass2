@@ -1,4 +1,4 @@
-Function: indexerror
+Function: index
         Body: 
             x=arr[a+6];
         EndBody.

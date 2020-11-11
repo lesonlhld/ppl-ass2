@@ -1,1 +1,1 @@
-Program([FuncDecl(Id("ifOKE"),[],([],[If([(BinaryOp("==",Id("n"),IntLiteral(0)),[],[Assign(Id("x"),IntLiteral(3))]),(BinaryOp("!=",Id("x"),IntLiteral(2)),[],[Assign(Id("check"),BooleanLiteral(False))])],())]))])
+Program([FuncDecl(Id("index"),[],([],[Assign(ArrayCell(CallExpr(Id("func"),[BinaryOp("+",Id("a"),ArrayCell(Id("b"),[BinaryOp("*",IntLiteral(6),BinaryOp("+",Id("x"),Id("y")))]))]),[Id("i"),Id("j")]),ArrayCell(Id("arr"),[BinaryOp("+",Id("a"),IntLiteral(6))]))]))])

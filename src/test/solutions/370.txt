@@ -1,1 +1,1 @@
-Program([FuncDecl(Id("testreturn"),[VarDecl(Id("n"),[],None)],([VarDecl(Id("t"),[],BooleanLiteral(False))],[If([(BinaryOp("<",Id("n"),IntLiteral(100)),[],[Assign(Id("t"),BooleanLiteral(True))])],()),Return(Id("t"))]))])
+Program([FuncDecl(Id("returnboolean"),[],([],[If([(BinaryOp("==",Id("str"),StringLiteral("Chung Xon")),[],[Return(BooleanLiteral(True))])],([],[Return(BooleanLiteral(False))]))]))])

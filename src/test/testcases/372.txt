@@ -1,4 +1,6 @@
-Function: returnstring
-            Body:
-                Return "String";
-            EndBody.
+Function: array
+        Parameter: x[123]
+        Body:
+            Var: i = 0;
+            x[123]={996,712,216};
+        EndBody.

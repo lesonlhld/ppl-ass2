@@ -1,1 +1,1 @@
-Program([FuncDecl(Id("callmore"),[],([],[CallStmt(Id("call"),[Id("a"),IntLiteral(876),BinaryOp("*.",Id("var"),FloatLiteral(6.5)),ArrayCell(Id("arr"),[IntLiteral(3)]),BooleanLiteral(True),StringLiteral("chuoi~~\\n")])]))])
+Program([FuncDecl(Id("testreturn"),[VarDecl(Id("n"),[],None)],([VarDecl(Id("t"),[],BooleanLiteral(False))],[If([(BinaryOp("<",Id("n"),IntLiteral(100)),[],[Assign(Id("t"),BooleanLiteral(True))])],()),Return(Id("t"))]))])

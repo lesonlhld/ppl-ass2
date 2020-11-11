@@ -1,5 +1,5 @@
 
-        Function: test
+        Function: ifelse
         Body:
             Var: x=1;
             If x > 10 Then

@@ -1,11 +1,10 @@
-Function: whileandif 
-        Body:
-            Var: x=20;
-            While True Do
-                If x==0 Then Break;
-                ElseIf x%2==0 Then
-                    x=x\2;
-                Else writeln(x);
-                EndIf.
+Function: whileinwhile 
+        Parameter: x
+        Body: 
+            While (True) Do
+                While (x>=0) Do
+                    x = x+-1;
+                EndWhile.
+                If ((x<0)) Then Break; EndIf.
             EndWhile.
         EndBody.

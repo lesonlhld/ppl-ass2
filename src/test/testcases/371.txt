@@ -1,6 +1,5 @@
-Function: returnnull 
-        Parameter: i
-        Body: 
-            If i==0 Then Return;
-            EndIf.
+
+        Function: funccallfail 
+        Body:
+        foo=a+2;
         EndBody.

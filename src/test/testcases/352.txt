@@ -1,8 +1,4 @@
-Function: whileoke
-        Body: 
-            Var: i = 0,k=10;
-            While i !=k Do
-                a[i] = b + i +. 15.0;
-                i = i + 1;
-            EndWhile.
+Function: whilenullstmt
+        Body:
+            While i < 5 Do EndWhile.
         EndBody.
