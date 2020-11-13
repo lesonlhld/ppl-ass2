@@ -169,7 +169,7 @@ class ASTGeneration(BKITVisitor):
 
         ifthenStmt += ctx.else_if().accept(self) if ctx.else_if() else []
 
-        elseStmt = (ctx.stmt_list(1).accept(self)) if ctx.ELSE() else []
+        elseStmt = (ctx.stmt_list(1).accept(self)) if ctx.ELSE() else ([],[])
         return If(ifthenStmt, elseStmt)
 
     # else_if: ELSEIF exp THEN stmt_list else_if | ELSEIF exp THEN stmt_list;
