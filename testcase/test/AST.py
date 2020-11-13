@@ -210,7 +210,7 @@ class If(Stmt):
 
     def __str__(self):
         ifstmt = printlist(self.ifthenStmt,printIfThenStmt,"If([(","),(",")]")
-        elsestmt = (",("+printListStmt(self.elseStmt)+"))") if self.elseStmt else ",())"
+        elsestmt = (",("+printListStmt(self.elseStmt)+"))") if self.elseStmt else ",([],[]))"
         return ifstmt + elsestmt
 
     def accept(self, v, param):
