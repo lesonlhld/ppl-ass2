@@ -21,3 +21,4 @@ if os.path.exists('test/solutionsSample/'):
 else:
     FO.write("Khong ton tai output test")
     print("Khong ton tai output test")
+FO.write("Pass: %d/%d" %(count, len(solutionsSample)))
