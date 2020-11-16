@@ -164,7 +164,7 @@ init_value: literal COMMA init_value | literal;
 
 literal: array | integer | FLOAT  | boolean_literal | STRING;
 
-integer: DECIMAL_INTEGER | HEX_INTEGER | OCT_INTEGER;
+integer: '-'? (DECIMAL_INTEGER | HEX_INTEGER | OCT_INTEGER);
 
 boolean_literal: TRUE | FALSE ;
 
