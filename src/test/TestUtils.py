@@ -96,8 +96,6 @@ class TestAST:
         parser = BKITParser(tokens)
         tree = parser.program()
         asttree = ASTGeneration().visit(tree)
-        # if str(asttree).find("line") == -1:
-        #     print(str(num))
         dest.write(str(asttree))
         dest.close()
         dest = open("./test/solutions/" + str(num) + ".txt","r")
